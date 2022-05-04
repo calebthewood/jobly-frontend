@@ -1,28 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import bootstrap from 'bootstrap';
 import RouteList from './RoutesList';
 import NavBar from './NavBar';
 import { BrowserRouter } from 'react-router-dom';
-import JoblyApi from './api';
-import React, { useState } from "react";
 
 function App() {
-  const [companies, setCompanies] = useState([]);
-
-  // Move this logic to company list
-  async function getCompanies() {
-    const companies = await JoblyApi.getCompanies();
-    setCompanies(companies);
-  }
-
-
 
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar getCompanies={getCompanies}/>
+        <NavBar />
         <div className="container">
-          <RouteList companies={companies}/>
+          <RouteList/>
         </div>
       </BrowserRouter>
     </div>

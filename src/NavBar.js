@@ -1,14 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Need to pass in prop to jobs to make request to backend for jobs
 
 function NavBar({getCompanies}) {
   return (
     <nav>
-      <NavLink to="/">Jobly</NavLink>
+      <Link to="/">Jobly</Link>
       <span>
-        <NavLink to="/companies" onClick={getCompanies}>Companies</NavLink>
-        <NavLink to="/jobs">Jobs</NavLink>
+        <Link to="/companies" onClick={getCompanies}>Companies</Link>
+        <Link to="/jobs">Jobs</Link>
       </span>
     </nav>
   )

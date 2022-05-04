@@ -10,7 +10,7 @@ function RouteList({companies}) {
   return (
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/companies" element={<CompanyList companies={companies}/>}/>
+      <Route path="/companies" element={<CompanyList />}/>
       <Route path="/companies/:company" element={<CompanyDetail/>}/>
       <Route path="/jobs" element={<JobList/>}/>
     </Routes>
