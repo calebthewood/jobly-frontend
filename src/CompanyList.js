@@ -1,6 +1,7 @@
 import JoblyApi from './api';
 import React, { useState, useEffect } from "react";
 import CompanyCard from './CompanyCard';
+import SearchForm from './SearchForm';
 
 /** Manages a list of Companies
  *
@@ -13,6 +14,7 @@ import CompanyCard from './CompanyCard';
 
 function CompanyList() {
   const [companies, setCompanies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(function getCompaniesFromApi() {
     async function getCompanies() {
@@ -20,15 +22,32 @@ function CompanyList() {
       setCompanies(companies);
     }
     getCompanies();
+    setIsLoading(false);
   }, [])
+
+  async function search(term) {
+    setIsLoading(true);
+    const companies = await JoblyApi.searchCompany(term)
+    setCompanies(companies);
+    setIsLoading(false);
+  }
+
+  const notFound = <p style={{color:"white"}}>Sorry, not found.</p>
+
+  if (isLoading) return <i style={{color:"white"}}>Loading</i>
 
   return (
     <div className="container">
-      {companies.length ? <div>
-        {companies.map(company => <CompanyCard key={company.handle} company={company}/>)}
-      </div> : <i>Loading</i>}
-  </div>
+      <div>
+        <SearchForm search={search} />
+      </div>
 
+      {companies.length ?
+        <div id="companyList">
+          {companies.map(company => <CompanyCard key={company.handle} company={company} />)}
+        </div>
+        : notFound}
+    </div>
   )
 }
 

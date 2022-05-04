@@ -3,20 +3,8 @@ body {
 }
 
 
-a:link {
+a {
   text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:active {
-  text-decoration: underline;
 }
 
 .companiesLink {
@@ -28,5 +16,5 @@ a:active {
 }
 
 .homeLink {
-    margin: 0 2rem;
+  margin: 0 2rem;
 }

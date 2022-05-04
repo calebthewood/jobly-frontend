@@ -15,7 +15,7 @@ function CompanyCard({ company }) {
 
     <Link to={`/companies/${company.handle}`}>
       <div className="row justify-content-center">
-        <div className="card mb-3 col-6">
+        <div className="card mb-3 col-md-8">
           <h6 className="card-header">
             {company.name}
             {company.logoUrl && <img src={`${company.logoUrl}`} alt={company.handle} className="float-end" />}

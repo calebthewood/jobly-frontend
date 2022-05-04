@@ -27,10 +27,10 @@ function CompanyDetail() {
 
     <div className="row justify-content-center">
       < div mb-3 className="col-6">
-        <h5>
+        <h5 style={{ color: "white", fontWeight:"bold"}}>
           {company.name}
         </h5>
-        <p>
+        <p style={{ color: "white"}}>
           {company.description}
         </p>
       </div >
