@@ -23,7 +23,7 @@ function CompanyList() {
   }, [])
 
   return (
-    <div>
+    <div className="container">
       {companies.length ? <div>
         {companies.map(company => <CompanyCard key={company.handle} company={company}/>)}
       </div> : <i>Loading</i>}

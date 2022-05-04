@@ -1,3 +1,32 @@
 body {
   background-image: url("http://react-jobly-1.surge.sh/static/media/background.6549e727.png");
 }
+
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+.companiesLink {
+  margin: 0 2rem;
+}
+
+.jobsLink {
+  margin: 0 2rem;
+}
+
+.homeLink {
+    margin: 0 2rem;
+}
