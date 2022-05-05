@@ -73,6 +73,25 @@ class JoblyApi {
     let res = await this.request("jobs", data)
     return res.jobs;
   }
+
+  /**Login User
+   * returns token or error.
+   */
+
+  static async login({username, password}) {
+    const data ={username, password}
+    try {
+      const  res = await this.request("auth/token", data, "post");
+      this.token = res.token;
+      return res
+    } catch (err) {
+      this.token = null;
+      console.error(err);
+      return err;
+    }
+  }
+
+
 }
 
 export default JoblyApi;

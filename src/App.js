@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <div className="container mt-3">
+        <div className="container">
           <RouteList/>
         </div>
       </BrowserRouter>
