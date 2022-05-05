@@ -14,9 +14,11 @@ class JoblyApi {
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+  static token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -81,7 +83,7 @@ class JoblyApi {
   static async login({username, password}) {
     const data ={username, password}
     try {
-      const  res = await this.request("auth/token", data, "post");
+      const res = await this.request("auth/token", data, "post");
       this.token = res.token;
       return res
     } catch (err) {
@@ -91,7 +93,44 @@ class JoblyApi {
     }
   }
 
+  /** Registers a user */
 
+  static async signup({ username, password, firstName, lastName, email }) {
+    const data = { username, password, firstName, lastName, email };
+    try {
+      const res = await this.request("auth/register", data, "post");
+      this.token = res.token;
+      return res
+    } catch (err) {
+      this.token = null;
+      console.error(err);
+      return err;
+    }
+  }
+
+  /** Retrieves user information */
+
+  static async getUser(username) {
+    try {
+      const res = await this.request(`users/${username}`)
+      return res
+    } catch (err) {
+      console.error(err)
+      return err
+    }
+  }
+
+  /** Updates a user's profile */
+
+  // static async updateUser({data}) {
+  //   try {
+  //     const res = await this.request(`users/${data.username}`, data, "patch")
+  //     return res.data
+  //   } catch (err) {
+  //     console.error(err)
+  //     return err
+  //   }
+  // }
 }
 
 export default JoblyApi;

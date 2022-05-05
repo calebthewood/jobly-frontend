@@ -7,6 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
+  // state for token
+  // state for curr user with global context
+
   return (
     <div className="App">
       <BrowserRouter>

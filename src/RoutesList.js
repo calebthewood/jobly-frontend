@@ -5,9 +5,12 @@ import CompanyList from "./CompanyList";
 import CompanyDetail from "./CompanyDetail";
 import JobList from "./JobList";
 import Login from "./Login";
+import Signup from "./SignUp";
+import Profile from "./Profile";
 
-// Will need to pass in props for Company Detail and JobList (data from backend)
-function RouteList({companies}) {
+function RouteList() {
+
+  // authentication for routes
 
   return (
     <Routes>
@@ -16,8 +19,8 @@ function RouteList({companies}) {
       <Route path="/companies/:handle" element={<CompanyDetail/>}/>
       <Route path="/jobs" element={<JobList/>}/>
       <Route path="/login" element={<Login/>}/>
-      {/* <Route path="/signup" element={<SignUp/>}/>
-      <Route path="/profile" element={<Profile/>}/> */}
+      <Route path="/signup" element={<Signup/>}/>
+      <Route path="/profile" element={<Profile/>}/>
     </Routes>
   )
 }
