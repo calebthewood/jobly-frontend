@@ -13,6 +13,9 @@ function NavBar({ getCompanies }) {
         </span>
         <span className="jobsLink">
           <Link to="/jobs">Jobs</Link>
+          <Link to="/profile">Profile</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
         </span>
       </span>
 

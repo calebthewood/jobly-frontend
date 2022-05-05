@@ -28,7 +28,7 @@ function Signup() {
 
     const res = await JoblyApi.signup(formData);
     if (res.token) {
-      navigate("/companies");
+      return navigate("/companies");
     }
     console.log("ERROR:  ", res);
     setError(res);
@@ -39,7 +39,7 @@ function Signup() {
     <div className="row justify-content-center mt-3">
       <div className="card col-md-4 justify-content-center">
         <div className="card-body">
-          <h2>Login</h2>
+          <h2>Signup</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label

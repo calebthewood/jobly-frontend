@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -18,7 +19,9 @@ class JoblyApi {
   //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-  static token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
+  static token = localStorage.getItem('token');
+
+  //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -26,8 +29,8 @@ class JoblyApi {
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
-        ? data
-        : {};
+      ? data
+      : {};
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -57,22 +60,22 @@ class JoblyApi {
 
   static async getJobs() {
     let res = await this.request('jobs');
-    return res.jobs
+    return res.jobs;
   }
 
   /** Search Company List */
 
   static async searchCompany(term) {
-    const data = {name: term}
-    let res = await this.request("companies", data)
+    const data = { name: term };
+    let res = await this.request("companies", data);
     return res.companies;
   }
 
   /** Search Job List */
 
   static async searchJob(term) {
-    const data = {title: term}
-    let res = await this.request("jobs", data)
+    const data = { title: term };
+    let res = await this.request("jobs", data);
     return res.jobs;
   }
 
@@ -80,14 +83,15 @@ class JoblyApi {
    * returns token or error.
    */
 
-  static async login({username, password}) {
-    const data ={username, password}
+  static async login({ username, password }) {
+    const data = { username, password };
     try {
       const res = await this.request("auth/token", data, "post");
-      this.token = res.token;
-      return res
+      localStorage.setItem('token', res.token);
+      //decode token, store user in global
+      console.log("TOKEN:   ", this.token);
+      return jwt_decode(res.token);
     } catch (err) {
-      this.token = null;
       console.error(err);
       return err;
     }
@@ -99,8 +103,11 @@ class JoblyApi {
     const data = { username, password, firstName, lastName, email };
     try {
       const res = await this.request("auth/register", data, "post");
-      this.token = res.token;
-      return res
+
+      localStorage.setItem('token', res.token);
+
+
+      return res;
     } catch (err) {
       this.token = null;
       console.error(err);
@@ -112,25 +119,31 @@ class JoblyApi {
 
   static async getUser(username) {
     try {
-      const res = await this.request(`users/${username}`)
-      return res
+      const res = await this.request(`users/${username}`);
+      console.log("RETURN FROM API getUSER   ", res.user)
+      return res.user;
+    } catch (err) {
+      console.error(err);
+      return err;
+    }
+  }
+
+  /** Updates a user's profile */
+
+  static async updateUser(data) {
+    delete data.username;
+    console.log("UPDATEUSER:   ",data)
+    try {
+      const res = await this.request(`users/${data.username}`, data, "patch")
+      return res.data
     } catch (err) {
       console.error(err)
       return err
     }
   }
 
-  /** Updates a user's profile */
-
-  // static async updateUser({data}) {
-  //   try {
-  //     const res = await this.request(`users/${data.username}`, data, "patch")
-  //     return res.data
-  //   } catch (err) {
-  //     console.error(err)
-  //     return err
-  //   }
-  // }
+  //accepts token, getsUser object.
+    //decode token, API getUser
 }
 
 export default JoblyApi;

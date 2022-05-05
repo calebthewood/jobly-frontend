@@ -16,17 +16,16 @@ function Profile() {
     email: ""
   });
 
-  // useEffect(function getUserFromApi() {
-  //   async function getUser(username) {
-  //     const user = await JoblyApi.getUser(username);
-  //     console.log(user, "userrrr")
-  //     console.log(username)
-  //     setFormData(user);
-  //   }
-  //   getUser("testusername");
-  //   setIsLoading(false);
-  //   console.log(formData, "formData!")
-  // }, [])
+  useEffect(function getUserFromApi() {
+    async function getUser(username) {
+      const user = await JoblyApi.getUser(username);
+      console.log("USER      ",user)
+      setFormData(user);
+    }
+    getUser("frodo");
+    setIsLoading(false);
+    console.log("formData!     ",formData)
+  }, [])
 
 
   function handleChange(evt) {
@@ -40,13 +39,13 @@ function Profile() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log("handleSubmit:    ", formData)
     const res = await JoblyApi.updateUser({
       username: formData.username,
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email
     });
-
 
     console.log(res, "res from update")
     if (res) {
@@ -76,7 +75,7 @@ function Profile() {
                 className="form-control"
                 value={formData.username}
                 onChange={handleChange}
-                deactivated>
+                disabled="true">
               </input>
             </div>
             <div className="mb-3">
@@ -121,7 +120,7 @@ function Profile() {
             <button className="btn btn-primary">Update</button>
           </form>
 
-          {message && <p className={message.status}>{message}</p>}
+          {message && <p className={message}>{message}</p>}
 
         </div>
       </div>

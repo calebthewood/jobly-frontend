@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import JoblyApi from "./api";
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
 function Login() {
   const navigate = useNavigate();
@@ -9,6 +11,8 @@ function Login() {
     username: "",
     password: ""
   });
+
+  const { currentUser, updateCurrentUser } = useContext(UserContext);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -23,10 +27,14 @@ function Login() {
     evt.preventDefault();
 
     const res = await JoblyApi.login(formData);
-    if (res.token) {
+
+    console.log("handleSubmit     ",res)
+
+    if (res.username) {
+      updateCurrentUser(res)
       navigate("/companies");
     }
-    console.log("ERROR:  ", res);
+
     setError(res);
   }
 
