@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import JoblyApi from "./api";
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
 function Signup() {
   const navigate = useNavigate();
@@ -14,6 +16,9 @@ function Signup() {
     email: ""
   });
 
+  const {updateCurrentUser } = useContext(UserContext);
+
+
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -25,12 +30,12 @@ function Signup() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-
     const res = await JoblyApi.signup(formData);
-    if (res.token) {
-      return navigate("/companies");
+
+    if (res.username) {
+      updateCurrentUser(res)
+      navigate("/companies");
     }
-    console.log("ERROR:  ", res);
     setError(res);
   }
 

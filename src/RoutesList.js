@@ -7,20 +7,32 @@ import JobList from "./JobList";
 import Login from "./Login";
 import Signup from "./SignUp";
 import Profile from "./Profile";
+import Logout from "./Logout";
 
-function RouteList() {
+function RouteList({currentUser}) {
 
-  // authentication for routes
+  const loggedInRoutes =
+    <>
+      <Route path="/companies" element={<CompanyList />}/>
+      <Route path="/companies/:handle" element={<CompanyDetail/>}/>
+      <Route path="/jobs" element={<JobList />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/logout" element={<Logout />} />
+      </>
+
+
+
+  const loggedOutRoutes =
+      <>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup/>}/>
+      </>
 
   return (
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/companies" element={<CompanyList />}/>
-      <Route path="/companies/:handle" element={<CompanyDetail/>}/>
-      <Route path="/jobs" element={<JobList/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/profile" element={<Profile/>}/>
+      {currentUser ? loggedInRoutes : loggedOutRoutes}
+      <Route path="*" element={<Navigate to="/"/>}/>
     </Routes>
   )
 }

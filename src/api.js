@@ -19,7 +19,7 @@ class JoblyApi {
   //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-  static token = localStorage.getItem('token');
+  static token = null;
 
   //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
 
@@ -85,9 +85,11 @@ class JoblyApi {
 
   static async login({ username, password }) {
     const data = { username, password };
+
     try {
       const res = await this.request("auth/token", data, "post");
       localStorage.setItem('token', res.token);
+      this.token = res.token
       //decode token, store user in global
       console.log("TOKEN:   ", this.token);
       return jwt_decode(res.token);
@@ -101,15 +103,13 @@ class JoblyApi {
 
   static async signup({ username, password, firstName, lastName, email }) {
     const data = { username, password, firstName, lastName, email };
+
     try {
       const res = await this.request("auth/register", data, "post");
-
       localStorage.setItem('token', res.token);
-
-
-      return res;
+      this.token = res.token
+      return jwt_decode(res.token);
     } catch (err) {
-      this.token = null;
       console.error(err);
       return err;
     }

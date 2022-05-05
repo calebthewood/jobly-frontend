@@ -5,6 +5,7 @@ body {
 
 a {
   text-decoration: none;
+  margin: 0 2rem;
 }
 
 .companiesLink {

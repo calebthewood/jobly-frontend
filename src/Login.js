@@ -12,7 +12,7 @@ function Login() {
     password: ""
   });
 
-  const { currentUser, updateCurrentUser } = useContext(UserContext);
+  const {updateCurrentUser } = useContext(UserContext);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -25,16 +25,12 @@ function Login() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-
     const res = await JoblyApi.login(formData);
-
-    console.log("handleSubmit     ",res)
 
     if (res.username) {
       updateCurrentUser(res)
       navigate("/companies");
     }
-
     setError(res);
   }
 
