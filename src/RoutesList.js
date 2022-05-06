@@ -9,14 +9,14 @@ import Signup from "./SignUp";
 import Profile from "./Profile";
 
 
-function RouteList({ currentUser, loginUser, signupUser }) {
+function RouteList({ currentUser, loginUser, signupUser, token }) {
 
   const loggedInRoutes =
     <>
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile" element={<Profile token={token}/>} />
     </>;
 
 

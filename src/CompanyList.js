@@ -19,10 +19,10 @@ function CompanyList() {
   useEffect(function getCompaniesFromApi() {
     async function getCompanies() {
       const companies = await JoblyApi.getCompanies();
-      setCompanies(companies);
+      setCompanies(companies)
+      setIsLoading(false);
     }
     getCompanies();
-    setIsLoading(false);
   }, [])
 
   async function search(term) {
@@ -32,7 +32,7 @@ function CompanyList() {
     setIsLoading(false);
   }
 
-  const notFound = <p style={{color:"white"}}>Sorry, not found.</p>
+  const notFound = <p style={{color:"white"}}>Companies not found.</p>
 
   if (isLoading) return <i style={{color:"white"}}>Loading</i>
 

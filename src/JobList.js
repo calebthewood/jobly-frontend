@@ -21,9 +21,9 @@ function JobList() {
     async function getJobs() {
       const jobs = await JoblyApi.getJobs();
       setJobs(jobs);
+      setIsLoading(false);
     }
     getJobs();
-    setIsLoading(false)
   }, [])
 
   async function search(term) {

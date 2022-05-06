@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 import './App.css';
 import bootstrap from 'bootstrap';
@@ -11,29 +11,15 @@ import JoblyApi from './api';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
-
-  //login (username, password)
-    /*
-//login fn
-    1. sends JoblyAPI req to /auth/token (username,pswd)
-    2. set local storage token (token, from resp)
-    3. set state token (token, from resp)
-
-//API fn
-    4. set JoblyAPI token (token, in resp)
-    5. decode token (token, in resp)
-    6. Jobly get user request (username from decoded token)
-    returns UserObj
-
-/back in login fn
-    7. set currentUser in context (user object from resp)
-
-    8. navigate to "/"
-
-    */
-
+  useEffect(function getLocalToken() {
+    async function getToken() {
+      setToken(() => localStorage.getItem("token") || null);
+      if (token) setCurrentUser(await JoblyApi.getUser(token))
+    }
+    getToken();
+  }, [token])
 
   async function loginUser(formData) {
     const token = await JoblyApi.getToken(formData);
@@ -42,7 +28,7 @@ function App() {
     localStorage.setItem('token', token);
 
     const newUser = await JoblyApi.getUser(token);
-    setCurrentUser(newUser);
+    setCurrentUser(() => newUser);
   }
 
 
@@ -53,13 +39,13 @@ function App() {
     localStorage.setItem('token', token);
 
     const newUser = await JoblyApi.getUser(token);
-    setCurrentUser(newUser);
+    setCurrentUser(() => newUser);
   }
 
 
   function logout(){
-    setCurrentUser(()=>null);
-    setToken(()=> null);
+    setCurrentUser(() =>null);
+    setToken(() => null);
     localStorage.removeItem("token");
   }
 
@@ -77,7 +63,8 @@ function App() {
             <RouteList
               currentUser={currentUser}
               loginUser={loginUser}
-              signupUser={signupUser}/>
+              signupUser={signupUser}
+              token={token} />
           </div>
         </BrowserRouter>
       </UserContext.Provider>

@@ -124,7 +124,7 @@ class JoblyApi {
   static async getUser(token) {
     // console.log("TOKEN:   ",this.token)
     try {
-      const { username } = jwt_decode(this.token);
+      const { username } = jwt_decode(token);
       const res = await this.request(`users/${username}`);
       return res.user;
 
@@ -139,21 +139,15 @@ class JoblyApi {
   /** Updates a user's profile */
 
   static async updateUser(data) {
-    const username = data.username;
-    console.log("UPDATE DATA,  ", data);
-
+    const {username} = jwt_decode(this.token );
     delete data.isAdmin;
     delete data.username;
     delete data.applications;
 
-    try {
-      const res = await this.request(`users/${username}`, data, "patch");
+    const res = await this.request(`users/${username}`, data, "patch");
 
-      return res;
-    } catch (err) {
-      console.error("updateUser", err);
-      return err;
-    }
+    return res;
+
   }
 
   //accepts token, getsUser object.

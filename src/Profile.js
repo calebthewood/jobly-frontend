@@ -4,30 +4,30 @@ import JoblyApi from "./api";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 
-function Profile() {
+function Profile({token}) {
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: ""
+    username: currentUser.username,
+    firstName:currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email
   });
 
 //review for uncontrolled comp.
   useEffect(function getUserFromApi() {
 
-    async function getUser(username) {
-      const user = await JoblyApi.getUser(username);
+    async function getUser(token) {
+      const user = await JoblyApi.getUser(token);
 
-      setFormData(user);
+      setFormData(()=> user);
+      setIsLoading(false);
     }
-
-    getUser(currentUser.username);
-    setIsLoading(false);
-  }, [currentUser]);
+    console.log("Profile Token:     ", token)
+    getUser(token);
+  }, []);
 
 
   function handleChange(evt) {
@@ -41,14 +41,19 @@ function Profile() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const res = await JoblyApi.updateUser(formData);
-    console.log("handleSubmit", res);
+    try {
+      const {user} = await JoblyApi.updateUser(formData);
+      setMessage("Updated successfully");
 
-    setMessage("Updated successfully");
-    navigate("/profile");
+      setFormData(() => user);
+      navigate("/profile");
 
-    setMessage(res[0]);
-
+    } catch (err) {
+      console.log("HandleSubmit ERROR")
+      console.error(err)
+      setMessage(err[0])
+      setFormData(()=> formData)
+    }
   }
 
   if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
