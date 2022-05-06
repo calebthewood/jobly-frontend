@@ -95,8 +95,7 @@ class JoblyApi {
     const data = { username, password, firstName, lastName, email };
 
     const res = await this.request("auth/register", data, "post");
-    this.token = res.token;
-    return this.token;
+    return res.token;
   }
 
   /** Retrieves user information */
