@@ -2,20 +2,25 @@ body {
   background-image: url("http://react-jobly-1.surge.sh/static/media/background.6549e727.png");
 }
 
+.Navigation {
+  background-color: white;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: black;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: #0d6efd;
+  text-decoration: none;
+}
 
 a {
   text-decoration: none;
-  margin: 0 2rem;
+  color: black;
 }
 
-.companiesLink {
-  margin: 0 2rem;
-}
-
-.jobsLink {
-  margin: 0 2rem;
-}
-
-.homeLink {
-  margin: 0 2rem;
-}

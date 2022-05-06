@@ -48,7 +48,7 @@ function Profile({ updateCurrentUser }) {
     try {
       const { user } = await JoblyApi.updateUser(formData);
       setMessage("Updated successfully");
-      setTimeout(() => setMessage(null), 5000)
+      setTimeout(() => setMessage(null), 5000);
       updateCurrentUser(user);
       setFormData(() => user);
       navigate("/profile");
@@ -56,7 +56,7 @@ function Profile({ updateCurrentUser }) {
     } catch (err) {
       console.error("HandleSubmit ERROR", err);
       setError(err[0]);
-      setTimeout(() => setError(null), 5000)
+      setTimeout(() => setError(null), 5000);
 
       setFormData(() => formData);
     }
@@ -123,9 +123,11 @@ function Profile({ updateCurrentUser }) {
             </div>
             <button className="btn btn-primary">Update</button>
           </form>
-          {message && <p className="alert alert-success">{message}</p>}
-          {error && <p className="alert alert-danger">{error}</p>}
 
+          <div className="mt-3">
+            {message && <p className="alert alert-success">{message}</p>}
+            {error && <p className="alert alert-danger">{error}</p>}
+          </div>
         </div>
       </div>
     </div>);
