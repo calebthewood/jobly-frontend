@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
+/** Handles Signup Form
+ * Props: signupUser()
+ *
+ * State: error, formData
+ */
 function Signup({ signupUser }) {
   const navigate = useNavigate();
 
@@ -14,6 +18,7 @@ function Signup({ signupUser }) {
     email: ""
   });
 
+  /** Updates formData state on change */
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -23,18 +28,19 @@ function Signup({ signupUser }) {
     }));
   }
 
+  /** Submits new user data to API */
   async function handleSubmit(evt) {
     evt.preventDefault();
 
     try {
-      signupUser(formData);
+      await signupUser(formData);
       navigate("/");
     } catch (err) {
-      console.log("SIGNUP ERROR:   ", err)
+      console.log("SIGNUP ERROR:   ", err);
       setError(err);
     }
   }
-  //could map out inputs
+  //TODO: render form using map()
   return (
     <div className="row justify-content-center mt-3">
       <div className="card col-md-4 justify-content-center">

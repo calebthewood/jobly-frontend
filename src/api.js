@@ -85,20 +85,8 @@ class JoblyApi {
 
   static async getToken({ username, password }) {
     const data = { username, password };
-
-    try {
-
-      const res = await this.request("auth/token", data, "post");
-      this.token = res.token;
-      console.log("getToken:    ", this.token);
-      return this.token;
-
-    } catch (err) {
-
-      console.error(err);
-      return err;
-
-    }
+    const res = await this.request("auth/token", data, "post");
+    return res.token;
   }
 
   /** Registers a user */
@@ -106,40 +94,24 @@ class JoblyApi {
   static async signup({ username, password, firstName, lastName, email }) {
     const data = { username, password, firstName, lastName, email };
 
-    try {
-
-      const res = await this.request("auth/register", data, "post");
-      this.token = res.token;
-      return this.token;
-
-    } catch (err) {
-
-      console.error(err);
-      return err;
-    }
+    const res = await this.request("auth/register", data, "post");
+    this.token = res.token;
+    return this.token;
   }
 
   /** Retrieves user information */
 
   static async getUser(token) {
     // console.log("TOKEN:   ",this.token)
-    try {
-      const { username } = jwt_decode(token);
-      const res = await this.request(`users/${username}`);
-      return res.user;
-
-    } catch (err) {
-
-      console.error(err);
-      return err;
-
-    }
+    const { username } = jwt_decode(token);
+    const res = await this.request(`users/${username}`);
+    return res.user;
   }
 
   /** Updates a user's profile */
 
   static async updateUser(data) {
-    const {username} = jwt_decode(this.token );
+    const { username } = jwt_decode(this.token);
     delete data.isAdmin;
     delete data.username;
     delete data.applications;

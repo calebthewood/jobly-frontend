@@ -14,27 +14,29 @@ import SearchForm from './SearchForm';
 
 function CompanyList() {
   const [companies, setCompanies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
+  /**Gets list of companies on mount */
   useEffect(function getCompaniesFromApi() {
     async function getCompanies() {
       const companies = await JoblyApi.getCompanies();
-      setCompanies(companies)
+      setCompanies(companies);
       setIsLoading(false);
     }
     getCompanies();
-  }, [])
+  }, []);
 
+  /**Handles Search, updates companies state */
   async function search(term) {
     setIsLoading(true);
-    const companies = await JoblyApi.searchCompany(term)
+    const companies = await JoblyApi.searchCompany(term);
     setCompanies(companies);
     setIsLoading(false);
   }
 
-  const notFound = <p style={{color:"white"}}>Companies not found.</p>
+  const notFound = <p style={{ color: "white" }}>Companies not found.</p>;
 
-  if (isLoading) return <i style={{color:"white"}}>Loading</i>
+  if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
 
   return (
     <div className="container">
@@ -48,7 +50,7 @@ function CompanyList() {
         </div>
         : notFound}
     </div>
-  )
+  );
 }
 
 export default CompanyList;

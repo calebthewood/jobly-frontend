@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const { currentUser } = useContext(UserContext);
-  const homeStyle = { color: "white", textAlign: "center", height: "70vw"};
+  const homeStyle = { color: "white", textAlign: "center", height: "70vw" };
   const name = currentUser ? currentUser.firstName : "";
 
   const loggedInMsg = (

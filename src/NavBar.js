@@ -1,7 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// Need to pass in prop to jobs to make request to backend for jobs
-
+/** Renders NavBar
+ *
+ * Props: currentUser, logout()
+ *
+ * Handles display based on currentUser state.
+ */
 function NavBar({currentUser, logout}) {
 
   const name = currentUser ? currentUser.username : "";

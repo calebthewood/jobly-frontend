@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+/** Handles search based on user input */
 function SearchForm({search}) {
   const [term, setTerm] = useState("");
 

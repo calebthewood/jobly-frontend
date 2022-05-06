@@ -1,7 +1,6 @@
-import { useState, createContext, useEffect } from 'react';
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import bootstrap from 'bootstrap';
 import RouteList from './RoutesList';
 import NavBar from './NavBar';
 import UserContext from './UserContext';
@@ -12,45 +11,48 @@ import JoblyApi from './api';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [isLoading, setIsLoading] = useState(true);
 
+  /** Hydration: monitors for change to token state */
   useEffect(function getLocalToken() {
     async function getToken() {
-      setToken(() => localStorage.getItem("token") || null);
-      if (token) setCurrentUser(await JoblyApi.getUser(token))
+      JoblyApi.token = token;
+      if (token) {
+        setCurrentUser(await JoblyApi.getUser(token));
+      }
+      setIsLoading(false);
     }
     getToken();
-  }, [token])
+  }, [token]);
 
+
+  /**Handles login, sets token state and local storage */
   async function loginUser(formData) {
     const token = await JoblyApi.getToken(formData);
-
     setToken(token);
     localStorage.setItem('token', token);
-
-    const newUser = await JoblyApi.getUser(token);
-    setCurrentUser(() => newUser);
   }
 
-
+  /**Handles signup, sets token state and local storage */
   async function signupUser(formData) {
     const token = await JoblyApi.signup(formData);
-
     setToken(token);
     localStorage.setItem('token', token);
-
-    const newUser = await JoblyApi.getUser(token);
-    setCurrentUser(() => newUser);
   }
 
+  /**Updates currentUser state */
+  function updateCurrentUser(updatedUser) {
+    setCurrentUser(updatedUser);
+  }
 
-  function logout(){
-    setCurrentUser(() =>null);
-    setToken(() => null);
+  /**Handles logout, cleats currentUser, token state, and local storage. */
+  function logout() {
+    setCurrentUser(null);
+    setToken(null);
     localStorage.removeItem("token");
   }
 
-
-  console.log("APP:   ", currentUser);
+  if (isLoading) return <i style={{ color: "white" }}>Loading...</i>;
 
   return (
     <div className="App">
@@ -64,6 +66,7 @@ function App() {
               currentUser={currentUser}
               loginUser={loginUser}
               signupUser={signupUser}
+              updateCurrentUser={updateCurrentUser}
               token={token} />
           </div>
         </BrowserRouter>

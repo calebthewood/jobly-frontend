@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import JobCard from "./JobCard";
 import JoblyApi from "./api";
 
-/** Skeleton! */
+/** Company Detail:
+ * state: company object
+ *
+ * renders Company Details with list of JobCards
+ */
 function CompanyDetail() {
-  //http://localhost:3001/companies/ayala-buchanan
-
-
   const { handle } = useParams();
-
   const [company, setCompany] = useState(null);
 
+  /**Gets company data with jobs from API */
   useEffect(function getCompanyFromApi() {
     async function getCompany() {
       const company = await JoblyApi.getCompany(handle);
@@ -19,6 +20,7 @@ function CompanyDetail() {
     }
     getCompany();
   }, []);
+
 
   if (!company) return <i>Loading</i>;
 

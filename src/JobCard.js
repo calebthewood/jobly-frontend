@@ -1,6 +1,6 @@
 
 
-
+/** Renders JobCard */
 function JobCard({ job }) {
   return (
     <div className="row justify-content-center">

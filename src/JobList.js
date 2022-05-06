@@ -14,9 +14,9 @@ import SearchForm from './SearchForm';
  */
 function JobList() {
   const [jobs, setJobs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
-
+  /** Gets Jobs from API and updates jobs and loading state. */
   useEffect(function getJobsFromApi() {
     async function getJobs() {
       const jobs = await JoblyApi.getJobs();
@@ -24,29 +24,29 @@ function JobList() {
       setIsLoading(false);
     }
     getJobs();
-  }, [])
-
+  }, []);
+  /** Handles search, and updates jobs and loading state. */
   async function search(term) {
-    setIsLoading(true)
-    const jobs = await JoblyApi.searchJob(term)
+    setIsLoading(true);
+    const jobs = await JoblyApi.searchJob(term);
     setJobs(jobs);
-    setIsLoading(false)
+    setIsLoading(false);
   }
 
-  const notFound = <p style={{color:"white"}}>Sorry, not found.</p>
+  const notFound = <p style={{ color: "white" }}>Sorry, not found.</p>;
 
-  if (isLoading) return <i style={{color:"white"}}>Loading</i>
+  if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
 
   return (
     <div className='container'>
-      <SearchForm search={search}/>
+      <SearchForm search={search} />
       {jobs.length ?
         <div>
-          {jobs.map( job => <JobCard key={job.id} job={job} />)}
-       </div>
-       : notFound }
+          {jobs.map(job => <JobCard key={job.id} job={job} />)}
+        </div>
+        : notFound}
     </div>
-  )
+  );
 }
 
 export default JobList;

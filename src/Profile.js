@@ -4,32 +4,29 @@ import JoblyApi from "./api";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 
-function Profile({token}) {
+
+
+/**Handles Profile Update
+ *
+ * Props: updateCurrentUser()
+ *
+ * State: message, formData
+ *
+ * Loads user update form with current data.
+ * Submits updates to API
+ */
+function Profile({ updateCurrentUser }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const [message, setMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+
   const [formData, setFormData] = useState({
     username: currentUser.username,
-    firstName:currentUser.firstName,
+    firstName: currentUser.firstName,
     lastName: currentUser.lastName,
     email: currentUser.email
   });
-
-//review for uncontrolled comp.
-  useEffect(function getUserFromApi() {
-
-    async function getUser(token) {
-      const user = await JoblyApi.getUser(token);
-
-      setFormData(()=> user);
-      setIsLoading(false);
-    }
-    console.log("Profile Token:     ", token)
-    getUser(token);
-  }, []);
-
-
+  /**Updates formData state with changes to form. */
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -39,25 +36,29 @@ function Profile({token}) {
     }));
   }
 
+  /**
+   * Submits formData to API
+   * Updates currentUser
+   * Updates formData
+   * Displays error messages
+   */
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      const {user} = await JoblyApi.updateUser(formData);
+      const { user } = await JoblyApi.updateUser(formData);
       setMessage("Updated successfully");
 
+      updateCurrentUser(user);
       setFormData(() => user);
       navigate("/profile");
 
     } catch (err) {
-      console.log("HandleSubmit ERROR")
-      console.error(err)
-      setMessage(err[0])
-      setFormData(()=> formData)
+      console.error("HandleSubmit ERROR", err);
+      setMessage(err[0]);
+      setFormData(() => formData);
     }
   }
-
-  if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
-
+  //TODO: render from using map()
   return (
     <div className="row justify-content-center mt-3">
       <div className="card col-md-4 justify-content-center">

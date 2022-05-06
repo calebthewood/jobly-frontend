@@ -8,15 +8,15 @@ import Login from "./Login";
 import Signup from "./SignUp";
 import Profile from "./Profile";
 
-
-function RouteList({ currentUser, loginUser, signupUser, token }) {
+/**Renders available routes based on currentUser state. */
+function RouteList({ currentUser, loginUser, signupUser, updateCurrentUser }) {
 
   const loggedInRoutes =
     <>
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
-      <Route path="/profile" element={<Profile token={token}/>} />
+      <Route path="/profile" element={<Profile updateCurrentUser={updateCurrentUser}/>} />
     </>;
 
 

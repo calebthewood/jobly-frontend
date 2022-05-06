@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import JoblyApi from "./api";
 
+/** Handles Login
+ * Props: loginUser()
+ *
+ * State: error obj, formData
+ *
+ * Renders Login Form and sets currentUser.
+*/
 function Login({ loginUser }) {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -10,6 +16,7 @@ function Login({ loginUser }) {
     password: ""
   });
 
+  /** Updates formData state on each change */
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -19,12 +26,13 @@ function Login({ loginUser }) {
     }));
   }
 
+  /** Handles login, calls login fn from App. */
   async function handleSubmit(evt) {
     evt.preventDefault();
 
     try {
-      loginUser(formData);
-      navigate("/");
+      await loginUser(formData);
+      //navigate("/");
     } catch (err) {
       console.log("LOGIN ERROR:   ", err)
       setError(err);
