@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import JoblyApi from "./api";
-import { useContext } from "react";
-import UserContext from "./UserContext";
 
-function Signup() {
+
+function Signup({ signupUser }) {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
@@ -15,8 +13,6 @@ function Signup() {
     lastName: "",
     email: ""
   });
-
-  const {updateCurrentUser } = useContext(UserContext);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -29,15 +25,16 @@ function Signup() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const res = await JoblyApi.signup(formData);
 
-    if (res.username) {
-      updateCurrentUser(res)
-      navigate("/companies");
+    try {
+      signupUser(formData);
+      navigate("/");
+    } catch (err) {
+      console.log("SIGNUP ERROR:   ", err)
+      setError(err);
     }
-    setError(res);
   }
-//could map out inputs
+  //could map out inputs
   return (
     <div className="row justify-content-center mt-3">
       <div className="card col-md-4 justify-content-center">

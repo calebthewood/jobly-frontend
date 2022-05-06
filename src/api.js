@@ -83,19 +83,21 @@ class JoblyApi {
    * returns token or error.
    */
 
-  static async login({ username, password }) {
+  static async getToken({ username, password }) {
     const data = { username, password };
 
     try {
+
       const res = await this.request("auth/token", data, "post");
-      localStorage.setItem('token', res.token);
-      this.token = res.token
-      //decode token, store user in global
-      console.log("TOKEN:   ", this.token);
-      return jwt_decode(res.token);
+      this.token = res.token;
+      console.log("getToken:    ", this.token);
+      return this.token;
+
     } catch (err) {
+
       console.error(err);
       return err;
+
     }
   }
 
@@ -105,11 +107,13 @@ class JoblyApi {
     const data = { username, password, firstName, lastName, email };
 
     try {
+
       const res = await this.request("auth/register", data, "post");
-      localStorage.setItem('token', res.token);
-      this.token = res.token
-      return jwt_decode(res.token);
+      this.token = res.token;
+      return this.token;
+
     } catch (err) {
+
       console.error(err);
       return err;
     }
@@ -117,15 +121,18 @@ class JoblyApi {
 
   /** Retrieves user information */
 
-  static async getUser(username) {
+  static async getUser(token) {
+    // console.log("TOKEN:   ",this.token)
     try {
-
+      const { username } = jwt_decode(this.token);
       const res = await this.request(`users/${username}`);
-
       return res.user;
+
     } catch (err) {
+
       console.error(err);
       return err;
+
     }
   }
 
@@ -133,24 +140,24 @@ class JoblyApi {
 
   static async updateUser(data) {
     const username = data.username;
-    console.log("UPDATE DATA,  ", data)
+    console.log("UPDATE DATA,  ", data);
 
     delete data.isAdmin;
     delete data.username;
     delete data.applications;
 
     try {
-      const res = await this.request(`users/${username}`, data, "patch")
+      const res = await this.request(`users/${username}`, data, "patch");
 
-      return res
+      return res;
     } catch (err) {
-      console.error("updateUser" , err)
-      return err
+      console.error("updateUser", err);
+      return err;
     }
   }
 
   //accepts token, getsUser object.
-    //decode token, API getUser
+  //decode token, API getUser
 }
 
 export default JoblyApi;

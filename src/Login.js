@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import JoblyApi from "./api";
-import { useContext } from "react";
-import UserContext from "./UserContext";
 
-function Login() {
+function Login({ loginUser }) {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     username: "",
     password: ""
   });
-  //think about keeping user interactions in one place.
-  const { updateCurrentUser } = useContext(UserContext);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -25,13 +21,14 @@ function Login() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const res = await JoblyApi.login(formData);
 
-    if (res.username) {
-      updateCurrentUser(res);
-      navigate("/companies");
+    try {
+      loginUser(formData);
+      navigate("/");
+    } catch (err) {
+      console.log("LOGIN ERROR:   ", err)
+      setError(err);
     }
-    setError(res);
   }
 
 
