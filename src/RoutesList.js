@@ -21,7 +21,6 @@ function RouteList({currentUser}) {
       </>
 
 
-
   const loggedOutRoutes =
       <>
         <Route path="/login" element={<Login />} />

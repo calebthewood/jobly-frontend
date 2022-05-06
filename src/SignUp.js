@@ -18,7 +18,6 @@ function Signup() {
 
   const {updateCurrentUser } = useContext(UserContext);
 
-
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -38,8 +37,7 @@ function Signup() {
     }
     setError(res);
   }
-
-
+//could map out inputs
   return (
     <div className="row justify-content-center mt-3">
       <div className="card col-md-4 justify-content-center">

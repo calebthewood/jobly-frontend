@@ -119,8 +119,9 @@ class JoblyApi {
 
   static async getUser(username) {
     try {
+
       const res = await this.request(`users/${username}`);
-      console.log("RETURN FROM API getUSER   ", res.user)
+
       return res.user;
     } catch (err) {
       console.error(err);
@@ -131,13 +132,19 @@ class JoblyApi {
   /** Updates a user's profile */
 
   static async updateUser(data) {
+    const username = data.username;
+    console.log("UPDATE DATA,  ", data)
+
+    delete data.isAdmin;
     delete data.username;
-    console.log("UPDATEUSER:   ",data)
+    delete data.applications;
+
     try {
-      const res = await this.request(`users/${data.username}`, data, "patch")
-      return res.data
+      const res = await this.request(`users/${username}`, data, "patch")
+
+      return res
     } catch (err) {
-      console.error(err)
+      console.error("updateUser" , err)
       return err
     }
   }

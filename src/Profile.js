@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import JoblyApi from "./api";
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
 function Profile() {
   const navigate = useNavigate();
-
+  const { currentUser } = useContext(UserContext);
   const [message, setMessage] = useState(null);
-
   const [isLoading, setIsLoading] = useState(true);
-
   const [formData, setFormData] = useState({
     username: "",
     firstName: "",
@@ -16,16 +16,18 @@ function Profile() {
     email: ""
   });
 
+//review for uncontrolled comp.
   useEffect(function getUserFromApi() {
+
     async function getUser(username) {
       const user = await JoblyApi.getUser(username);
-      console.log("USER      ",user)
+
       setFormData(user);
     }
-    getUser("frodo");
+
+    getUser(currentUser.username);
     setIsLoading(false);
-    console.log("formData!     ",formData)
-  }, [])
+  }, [currentUser]);
 
 
   function handleChange(evt) {
@@ -39,24 +41,17 @@ function Profile() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log("handleSubmit:    ", formData)
-    const res = await JoblyApi.updateUser({
-      username: formData.username,
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email
-    });
+    const res = await JoblyApi.updateUser(formData);
+    console.log("handleSubmit", res);
 
-    console.log(res, "res from update")
-    if (res) {
-      setMessage("Updated successfully")
-      navigate("/profile");
-    }
-    console.log("ERROR:  ", res);
-    setMessage(res);
+    setMessage("Updated successfully");
+    navigate("/profile");
+
+    setMessage(res[0]);
+
   }
 
-  if (isLoading) return <i style={{color:"white"}}>Loading</i>
+  if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
 
   return (
     <div className="row justify-content-center mt-3">
@@ -75,7 +70,7 @@ function Profile() {
                 className="form-control"
                 value={formData.username}
                 onChange={handleChange}
-                disabled="true">
+                disabled={true}>
               </input>
             </div>
             <div className="mb-3">

@@ -3,14 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 // Need to pass in prop to jobs to make request to backend for jobs
 
 function NavBar({currentUser}) {
-  console.log(currentUser, "currentUser from Navbar")
+
+  const name = currentUser ? currentUser.username : "";
+
   const loggedInLinks =
     <div>
       <span>
           <Link to="/companies">Companies</Link>
           <Link to="/jobs">Jobs</Link>
           <Link to="/profile">Profile</Link>
-          <Link to="/logout">Logout</Link>
+          <Link to="/logout">{name} Logout</Link>
       </span>
     </div>
 

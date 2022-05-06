@@ -11,8 +11,8 @@ function Login() {
     username: "",
     password: ""
   });
-
-  const {updateCurrentUser } = useContext(UserContext);
+  //think about keeping user interactions in one place.
+  const { updateCurrentUser } = useContext(UserContext);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -28,7 +28,7 @@ function Login() {
     const res = await JoblyApi.login(formData);
 
     if (res.username) {
-      updateCurrentUser(res)
+      updateCurrentUser(res);
       navigate("/companies");
     }
     setError(res);
