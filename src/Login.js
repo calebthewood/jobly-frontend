@@ -33,7 +33,7 @@ function Login({ loginUser }) {
     try {
       await loginUser(formData);
     } catch (err) {
-      console.log("LOGIN ERROR:   ", err)
+      console.log("LOGIN ERROR:   ", err);
       setError(err);
     }
   }
@@ -41,7 +41,7 @@ function Login({ loginUser }) {
 
   return (
     <div className="row justify-content-center mt-3">
-      <div className="card col-8 justify-content-center">
+      <div className="card col-10 col-md-6 col-xl-5 justify-content-center">
         <div className="card-body">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -72,8 +72,14 @@ function Login({ loginUser }) {
                 onChange={handleChange}>
               </input>
             </div>
-            <button type="submit" className="btn btn-primary me-3">Login</button>
-            <Link to="/" className="col btn btn-secondary">Cancel</Link>
+            <div className="row justify-content-around">
+              <button
+                type="submit"
+                className="col btn btn-primary col-11 col-sm-4 m-1">Login</button>
+              <Link
+                to="/"
+                className="col btn btn-secondary col-11 col-sm-4 m-1">Cancel</Link>
+            </div>
           </form>
 
           {error && <p className="alert alert-danger">{error}</p>}

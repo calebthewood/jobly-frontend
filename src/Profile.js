@@ -64,7 +64,7 @@ function Profile({ updateCurrentUser }) {
   return (
     <div className="row justify-content-center mt-3">
 
-      <div className="card col-8 shadow justify-content-center">
+      <div className="card col-10 col-md-8 col-xl-6 shadow justify-content-center">
         <div className="card-body">
           <h2 className="card-title">Update Profile</h2>
           <form onSubmit={handleSubmit}>

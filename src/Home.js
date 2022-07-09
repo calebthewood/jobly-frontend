@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const { currentUser } = useContext(UserContext);
-  const homeStyle = { color: "white", textAlign: "center", height: "70vw" };
   const name = currentUser ? currentUser.firstName : "";
 
   const loggedInMsg = (
@@ -14,16 +13,16 @@ function Home() {
   );
 
   const loggedOutMsg = (
-    <div className="home-btn row-cols-2">
-      <Link to="/login" className="col-2 btn btn-outline-light shadow me-3">Login</Link>
-      <Link to="/signup" className="col-2 btn btn-outline-light shadow">Signup</Link>
+    <div className="home-btn row justify-content-center">
+      <Link to="/login" className="m-1 col col-6 col-sm-2 btn btn-outline-light shadow">Login</Link>
+      <Link to="/signup" className="m-1 col col-6 col-sm-2 btn btn-outline-light shadow">Signup</Link>
     </div>
   );
   return (
-    <div className="row align-items-center" style={homeStyle}>
-      <div className="col home-heading" >
-        <p className="h1 fw-bold">Jobly</p>
-        <p className="h5 fw-light">All the jobs in one, convenient place.</p>
+    <div className="home-heading row align-items-center">
+      <div className="col" >
+        <h1 className="h1 fw-bold">Jobly</h1>
+        <h5 className="h5 fw-light">All the jobs in one, convenient place.</h5>
         {currentUser ? loggedInMsg : loggedOutMsg}
       </div>
     </div>

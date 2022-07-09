@@ -31,6 +31,9 @@ a {
 
 .home-heading {
   text-shadow: 2px 2px 5px #34302f;
+  height: calc(100vh - 150px);
+  color: white;
+  text-align: center;
 }
 
 .home-btn {
