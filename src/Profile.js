@@ -13,7 +13,7 @@ import UserContext from "./UserContext";
  * State: message, formData
  *
  * Loads user update form with current data.
- * Submits updates to API
+ * Submit updates to API
  */
 function Profile({ updateCurrentUser }) {
   const navigate = useNavigate();
@@ -61,12 +61,12 @@ function Profile({ updateCurrentUser }) {
       setFormData(() => formData);
     }
   }
-  //TODO: render from using map()
   return (
     <div className="row justify-content-center mt-3">
-      <div className="card col-md-4 justify-content-center">
+
+      <div className="card col-8 shadow justify-content-center">
         <div className="card-body">
-          <h2>Update Profile</h2>
+          <h2 className="card-title">Update Profile</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label
@@ -121,7 +121,8 @@ function Profile({ updateCurrentUser }) {
                 onChange={handleChange}>
               </input>
             </div>
-            <button className="btn btn-primary">Update</button>
+            <button type="submit" className="btn btn-primary me-3">Update</button>
+            <button onClick={()=> window.location.reload(false)} className="btn btn-secondary">Cancel</button>
           </form>
 
           <div className="mt-3">

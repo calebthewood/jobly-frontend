@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
  *
  * state - none
  *
- * CompanyList -> Company Card
+ * CompanyList -> CompanyCard
  */
 
 function CompanyCard({ company }) {
