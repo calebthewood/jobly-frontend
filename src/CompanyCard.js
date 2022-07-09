@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 function CompanyCard({ company }) {
 
   return (
-
     <Link to={`/companies/${company.handle}`}>
       <div className="row justify-content-center">
 
