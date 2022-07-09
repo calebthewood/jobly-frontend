@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 /** Handles Signup Form
  * Props: signupUser()
@@ -43,7 +43,7 @@ function Signup({ signupUser }) {
   //TODO: render form using map()
   return (
     <div className="row justify-content-center mt-3">
-      <div className="card col-md-4 justify-content-center">
+      <div className="card col-8 justify-content-center">
         <div className="card-body">
           <h2>Signup</h2>
           <form onSubmit={handleSubmit}>
@@ -113,7 +113,8 @@ function Signup({ signupUser }) {
                 onChange={handleChange}>
               </input>
             </div>
-            <button className="btn btn-primary">Signup</button>
+            <button type="submit" className="btn btn-primary me-3">Signup</button>
+            <Link to="/" className="col btn btn-secondary">Cancel</Link>
           </form>
 
           {error && <p className="alert alert-danger">{error}</p>}
