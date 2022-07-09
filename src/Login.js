@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /** Handles Login
  * Props: loginUser()
@@ -9,7 +9,7 @@ import { useNavigate, Link } from "react-router-dom";
  * Renders Login Form and sets currentUser.
 */
 function Login({ loginUser }) {
-  const navigate = useNavigate();
+
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     username: "",
@@ -32,7 +32,6 @@ function Login({ loginUser }) {
 
     try {
       await loginUser(formData);
-      //navigate("/");
     } catch (err) {
       console.log("LOGIN ERROR:   ", err)
       setError(err);
