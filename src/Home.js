@@ -14,9 +14,9 @@ function Home() {
   );
 
   const loggedOutMsg = (
-    <div>
-      <Link to="/login" className="btn btn-primary">Login</Link>
-      <Link to="/signup" className="btn btn-primary">Signup</Link>
+    <div className="home-btn row-cols-2">
+      <Link to="/login" className="col-2 btn btn-outline-light shadow me-3">Login</Link>
+      <Link to="/signup" className="col-2 btn btn-outline-light shadow">Signup</Link>
     </div>
   );
   return (

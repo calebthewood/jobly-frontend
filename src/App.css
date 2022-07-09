@@ -1,5 +1,4 @@
 body {
-  /* background-image: url("http://react-jobly-1.surge.sh/static/media/background.6549e727.png"); */
   background: url(/public/background.png);
   background-position: 50%;
   background-repeat: no-repeat;
@@ -32,5 +31,9 @@ a {
 
 .home-heading {
   text-shadow: 2px 2px 5px #34302f;
+}
+
+.home-btn {
+  text-shadow: none;
 }
 
