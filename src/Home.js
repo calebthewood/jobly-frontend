@@ -10,7 +10,7 @@ function Home() {
   const name = currentUser ? currentUser.firstName : "";
 
   const loggedInMsg = (
-    <p>Quick, find a job, think of the economy, {name}</p>
+    <p className="fw-light">Welcome, {name}</p>
   );
 
   const loggedOutMsg = (
