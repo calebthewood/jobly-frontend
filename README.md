@@ -20,7 +20,7 @@
 <br />
 <div align="center">
 
-<h1 align="center">Jobly</h1>
+<h1 align="center">Jobly, a React App</h1>
 
 <a href="https://github.com/calebthewood/jobly-frontend">
     <img src="https://s3.us-west-1.amazonaws.com/pix.ly/jobly.png" alt="screenshot" width="500">
