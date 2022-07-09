@@ -7,7 +7,12 @@ import { NavLink, Link } from "react-router-dom";
  * Handles display based on currentUser state.
  */
 function NavBar({currentUser, logout}) {
+  const joblyStyle = {
+    fontSize: "bigger",
+    fontWeight: "bolder",
+    padding: "0 1rem",
 
+  }
   const name = currentUser ? currentUser.username : "";
 
   const loggedInLinks =
@@ -28,7 +33,7 @@ function NavBar({currentUser, logout}) {
 
   return (
     <nav className="navbar navbar-light bg-light">
-      <NavLink className="nav-link" to="/" >Jobly</NavLink>
+      <NavLink style={joblyStyle} className="nav-link fs-4" to="/" >Jobly</NavLink>
       <span className="float-end">
         {currentUser ? loggedInLinks : loggedOutLinks}
       </span>
