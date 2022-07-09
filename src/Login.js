@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 /** Handles Login
  * Props: loginUser()
@@ -42,7 +42,7 @@ function Login({ loginUser }) {
 
   return (
     <div className="row justify-content-center mt-3">
-      <div className="card col-md-4 justify-content-center">
+      <div className="card col-8 justify-content-center">
         <div className="card-body">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -73,7 +73,8 @@ function Login({ loginUser }) {
                 onChange={handleChange}>
               </input>
             </div>
-            <button className="btn btn-primary">Login</button>
+            <button type="submit" className="btn btn-primary me-3">Login</button>
+            <Link to="/" className="col btn btn-secondary">Cancel</Link>
           </form>
 
           {error && <p className="alert alert-danger">{error}</p>}
