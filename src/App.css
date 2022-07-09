@@ -1,5 +1,11 @@
 body {
-  background-image: url("http://react-jobly-1.surge.sh/static/media/background.6549e727.png");
+  /* background-image: url("http://react-jobly-1.surge.sh/static/media/background.6549e727.png"); */
+  background: url(/public/background.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
 }
 
 .Navigation {
@@ -22,5 +28,9 @@ body {
 a {
   text-decoration: none;
   color: black;
+}
+
+.home-heading {
+  text-shadow: 2px 2px 5px #34302f;
 }
 

@@ -21,9 +21,9 @@ function Home() {
   );
   return (
     <div className="row align-items-center" style={homeStyle}>
-      <div className="col" >
-        <h3>Jobly</h3>
-        <h6>All the jobs in one, convenient place.</h6>
+      <div className="col home-heading" >
+        <p className="h1 fw-bold">Jobly</p>
+        <p className="h5 fw-light">All the jobs in one, convenient place.</p>
         {currentUser ? loggedInMsg : loggedOutMsg}
       </div>
     </div>
