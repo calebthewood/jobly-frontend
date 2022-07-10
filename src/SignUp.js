@@ -40,7 +40,7 @@ function Signup({ signupUser }) {
       setError(err);
     }
   }
-  //TODO: render form using map()
+
   return (
     <div className="row justify-content-center mt-3">
       <div className="card col-10 col-md-6 col-xl-5 justify-content-center">
