@@ -33,6 +33,12 @@ function JobList() {
     setIsLoading(false);
   }
 
+  /** Handles applying to a job */
+  function applyToJob(jobId) {
+    const res = await JoblyApi.applyToJob(jobId);
+
+  }
+
   const notFound = <p style={{ color: "white" }}>Sorry, not found.</p>;
 
   if (isLoading) return <i style={{ color: "white" }}>Loading</i>;

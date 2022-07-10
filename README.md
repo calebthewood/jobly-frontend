@@ -32,7 +32,7 @@
     <!-- <a href="https://github.com/calebthewood/jobly-frontend"><strong>Explore the docs »</strong></a>
     <br /> -->
     <br />
-    <a href="https://jobly-r25.surge.sh/companies">View Demo</a>
+    <a href="https://jobly-r25.surge.sh/">View Demo</a>
     ·
     <a href="https://github.com/calebthewood/express-jobly">View Backend</a>
     ·
@@ -124,7 +124,8 @@ WIP: Include info on all the different actions a user, company, or admin can tak
     - [x] improve breakpoints
     - [ ] make navbar collapsible
 - [ ] Job application feature
-    - [ ] add un-apply feature
+    - [ ] add apply
+    - [ ] add un-apply
 - [ ] Use a custom hook
 - [ ] Increase testing
 - [ ] Add pagination
@@ -141,9 +142,11 @@ See the [open issues](https://github.com/calebthewood/jobly-frontend/issues) for
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@calebthewood](https://twitter.com/calebthewood) - calebwood.cs@gmail.com.com
 
-Project Link: [https://github.com/calebthewood/jobly-frontend](https://github.com/calebthewood/jobly-frontend)
+I'm Caleb, Web Developer and Fullstack Enginner. Questions?
+- I post daily on twitter: [@calebthewood](https://twitter.com/calebthewood)
+- Personal Site: [calebwood.dev](https://www.calebwood.dev/)
+- email: calebwood.cs@gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -153,8 +156,7 @@ Project Link: [https://github.com/calebthewood/jobly-frontend](https://github.co
 ## Acknowledgments
 
 * [Rithm School](https://www.rithmschool.com/)
-* []()
-* []()
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
