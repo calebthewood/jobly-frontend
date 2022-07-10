@@ -14,7 +14,7 @@ state?
 
 ## The Plan:
 create applyToJob fn in API
-- take a token, username, job id
+- take job id
 - send post request to /:username/jobs/:id
 
 create handleJobApplication fn in App
