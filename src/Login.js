@@ -73,9 +73,9 @@ function Login({ loginUser }) {
               </input>
             </div>
             <div className="row justify-content-around">
-              <button
+              <input
                 type="submit"
-                className="col btn btn-primary col-11 col-sm-4 m-1">Login</button>
+                className="col btn btn-primary col-11 col-sm-4 m-1">Login</input>
               <Link
                 to="/"
                 className="col btn btn-secondary col-11 col-sm-4 m-1">Cancel</Link>

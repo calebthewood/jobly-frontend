@@ -114,7 +114,7 @@ function Signup({ signupUser }) {
               </input>
             </div>
             <div className="row justify-content-around">
-            <button type="submit" className="col btn btn-primary col-11 col-sm-4 m-1">Signup</button>
+            <input type="submit" className="col btn btn-primary col-11 col-sm-4 m-1">Signup</input>
             <Link to="/" className="col btn btn-secondary col-11 col-sm-4 m-1">Cancel</Link>
             </div>
           </form>

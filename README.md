@@ -117,10 +117,12 @@ WIP: Include info on all the different actions a user, company, or admin can tak
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Clean up design
-    - [ ] logo sizing
-    - [ ] searchbar alignment
-    - [ ] card margin & padding
+- [x] Clean up design
+    - [x] logo sizing
+    - [ ] move search to navbar & make collapsible
+    - [x] card margin & padding
+    - [x] improve breakpoints
+    - [ ] make navbar collapsible
 - [ ] Job application feature
     - [ ] add un-apply feature
 - [ ] Use a custom hook
