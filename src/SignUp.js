@@ -46,7 +46,7 @@ function Signup({ signupUser }) {
       <div className="card col-10 col-md-6 col-xl-5 justify-content-center">
         <div className="card-body">
           <h2>Signup</h2>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="mb-3">
               <label
                 htmlFor="username"
@@ -114,7 +114,10 @@ function Signup({ signupUser }) {
               </input>
             </div>
             <div className="row justify-content-around">
-            <input type="submit" className="col btn btn-primary col-11 col-sm-4 m-1">Signup</input>
+            <button
+              onClick={handleSubmit}
+              className="col btn btn-primary col-11 col-sm-4 m-1"
+              >Signup</button>
             <Link to="/" className="col btn btn-secondary col-11 col-sm-4 m-1">Cancel</Link>
             </div>
           </form>
