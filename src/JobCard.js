@@ -6,7 +6,7 @@ import JoblyApi from './api';
  *
  * prop - {job}
  *
- * state - none
+ * state - applied: boolean
  *
  * JobList -> JobCard
  */
@@ -20,7 +20,7 @@ function JobCard({ job }) {
     } else {
       return false;
     }
-  };
+  }
 
   const [applied, setApplied] = useState(active());
 
@@ -30,7 +30,6 @@ function JobCard({ job }) {
       setApplied(() => !applied);
     }
   }
-
 
   return (
     <div className="row justify-content-center">
