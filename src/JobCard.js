@@ -13,16 +13,16 @@ import JoblyApi from './api';
 function JobCard({ job }) {
   const { currentUser } = useContext(UserContext);
 
+  //determines whether this jobId is in the user's applications list.
   const active = () => {
-    if (currentUser?.jobs) {
-      return currentUser.jobs.includes(job.id)
+    if (currentUser?.applications) {
+      return currentUser.applications.includes(job.id);
     } else {
       return false;
     }
-  }
+  };
 
-  const [applied, setApplied] = useState(active);
-
+  const [applied, setApplied] = useState(active());
 
   async function handleApply() {
     if (!applied) {
@@ -31,18 +31,6 @@ function JobCard({ job }) {
     }
   }
 
-  const applyBtn = <button
-    style={{ width: "100px" }}
-    type="button"
-    className="btn btn-danger"
-    onClick={handleApply}>Apply</button>;
-
-  const unApplyBtn = <button
-    style={{ width: "100px" }}
-    type="button"
-    className="btn btn-danger"
-    onClick={handleApply}
-    disabled>Applied</button>;
 
   return (
     <div className="row justify-content-center">
@@ -52,8 +40,8 @@ function JobCard({ job }) {
             <h6 className="card-title">{job.title}</h6>
             <p className="card-text fw-light">{job.companyName}</p>
 
-            <div className="row justify-content-between card-text fw-light">
-              <div className="col col-9">
+            <div className="row card-text fw-light">
+              <div className="col">
                 <small>
                   Salary: {job.salary || ""}
                 </small>
@@ -65,8 +53,14 @@ function JobCard({ job }) {
                 </div>
               </div>
 
-              <div className="col-3">
-                { applied ? unApplyBtn : applyBtn}
+              <div className="col align-self-end">
+                <button
+                  style={{ width: "90px" }}
+                  type="button"
+                  className="btn btn-danger float-end"
+                  disabled={applied}
+                  onClick={handleApply}>{applied ? "Applied" : "Apply"}
+                </button>
               </div>
             </div>
 

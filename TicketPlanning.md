@@ -9,8 +9,8 @@ A document to record the planning process for each ticket.
 - no other body
 
 ## Summary
-need apply button/form to send post request with username and job id in the url.
-state?
+Button needs access to currentUser.jobs and job id
+    if
 
 ## The Plan:
 create applyToJob fn in API
