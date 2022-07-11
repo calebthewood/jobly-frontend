@@ -2,6 +2,7 @@ import JoblyApi from './api';
 import React, { useState, useEffect } from "react";
 import CompanyCard from './CompanyCard';
 import SearchForm from './SearchForm';
+import Loading from './Loading';
 
 /** Manages a list of Companies
  *
@@ -36,7 +37,9 @@ function CompanyList() {
 
   const notFound = <p style={{ color: "white" }}>Companies not found.</p>;
 
-  if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
+
+
+  if (isLoading) return <Loading />
 
   return (
     <div className="container">

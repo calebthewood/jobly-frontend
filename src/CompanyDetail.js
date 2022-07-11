@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JobCard from "./JobCard";
 import JoblyApi from "./api";
+import Loading from "./Loading";
 
 /** Company Detail:
  * state: company object
@@ -21,8 +22,7 @@ function CompanyDetail() {
     getCompany();
   }, []);
 
-
-  if (!company) return <i>Loading</i>;
+  if (!company) return <Loading />
 
   return (
 

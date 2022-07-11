@@ -5,6 +5,7 @@ import RouteList from './RoutesList';
 import NavBar from './NavBar';
 import UserContext from './UserContext';
 import JoblyApi from './api';
+import Loading from './Loading';
 
 //custom hook for logout?
 
@@ -53,7 +54,7 @@ function App() {
   }
 
 
-  if (isLoading) return <i style={{ color: "white" }}>Loading...</i>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="App">

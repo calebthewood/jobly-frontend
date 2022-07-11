@@ -2,6 +2,7 @@ import JoblyApi from './api';
 import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import SearchForm from './SearchForm';
+import Loading from './Loading';
 
 
 /** Manages list of Jobs
@@ -36,7 +37,7 @@ function JobList() {
 
   const notFound = <p style={{ color: "white" }}>Sorry, not found.</p>;
 
-  if (isLoading) return <i style={{ color: "white" }}>Loading</i>;
+  if (isLoading) return <Loading />
 
   return (
     <div className='container'>
