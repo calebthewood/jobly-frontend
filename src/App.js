@@ -52,6 +52,7 @@ function App() {
     localStorage.removeItem("token");
   }
 
+
   if (isLoading) return <i style={{ color: "white" }}>Loading...</i>;
 
   return (

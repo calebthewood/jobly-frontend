@@ -1,7 +1,8 @@
 import axios from "axios";
 import jwt_decode from 'jwt-decode';
-
+//token from insomnia testing: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZyb2RvIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjUwNTYxMTI2fQ.K8_5JvLSQ3A9l_ZVINJT5Uc_FUikcirKEJ8SgZAjeFA
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+// const BASE_URL = "https://r25-jobly-backend.herokuapp.com";
 
 /** API Class.
  *
@@ -24,8 +25,6 @@ class JoblyApi {
   //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
-
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
@@ -44,7 +43,6 @@ class JoblyApi {
   // Individual API routes
 
   /** Get details on a company by handle. */
-
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
@@ -57,14 +55,12 @@ class JoblyApi {
   }
 
   /** Get all jobs */
-
   static async getJobs() {
     let res = await this.request('jobs');
     return res.jobs;
   }
 
   /** Search Company List */
-
   static async searchCompany(term) {
     const data = { name: term };
     let res = await this.request("companies", data);
@@ -72,7 +68,6 @@ class JoblyApi {
   }
 
   /** Search Job List */
-
   static async searchJob(term) {
     const data = { title: term };
     let res = await this.request("jobs", data);
@@ -82,7 +77,6 @@ class JoblyApi {
   /**Login User
    * returns token or error.
    */
-
   static async getToken({ username, password }) {
     const data = { username, password };
     const res = await this.request("auth/token", data, "post");
@@ -90,7 +84,6 @@ class JoblyApi {
   }
 
   /** Registers a user */
-
   static async signup({ username, password, firstName, lastName, email }) {
     const data = { username, password, firstName, lastName, email };
 
@@ -98,17 +91,26 @@ class JoblyApi {
     return res.token;
   }
 
-  /** Retrieves user information */
+  /** Applies to a job */
 
+  static async applyToJob(jobId) {
+    const { username } = jwt_decode(this.token);
+    const res = await this.request(`users/${username}/jobs/${jobId}`,{}, "post")
+    /*
+      NOTE: this should be a post request, but since no data is
+      going in the body... I'll leave it as the default for now.
+    */
+    return res.data
+  }
+
+  /** Retrieves user information */
   static async getUser(token) {
-    // console.log("TOKEN:   ",this.token)
     const { username } = jwt_decode(token);
     const res = await this.request(`users/${username}`);
     return res.user;
   }
 
   /** Updates a user's profile */
-
   static async updateUser(data) {
     const { username } = jwt_decode(this.token);
     delete data.isAdmin;

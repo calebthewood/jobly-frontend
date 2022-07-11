@@ -25,6 +25,7 @@ function JobList() {
     }
     getJobs();
   }, []);
+
   /** Handles search, and updates jobs and loading state. */
   async function search(term) {
     setIsLoading(true);
