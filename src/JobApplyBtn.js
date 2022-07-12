@@ -2,7 +2,6 @@
 // import UserContext from "./UserContext";
 
 
-
 /** Button to Apply for Jobs
  * enabled if job not in users jobs list
  * disabled if job in users jobs list
@@ -15,7 +14,7 @@ function JobApplyBtn({ applyToJob, jobId }) {
     <button
       type="button"
       className="btn btn-danger"
-      onClick={applyToJob}
+      onClick=""
       >Apply</button>
   );
 }
