@@ -1,8 +1,8 @@
 import axios from "axios";
 import jwt_decode from 'jwt-decode';
 //token from insomnia testing: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZyb2RvIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjUwNTYxMTI2fQ.K8_5JvLSQ3A9l_ZVINJT5Uc_FUikcirKEJ8SgZAjeFA
-// const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
-const BASE_URL = "https://r25-jobly-backend.herokuapp.com";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+// const BASE_URL = "https://r25-jobly-backend.herokuapp.com";
 
 /** API Class.
  *

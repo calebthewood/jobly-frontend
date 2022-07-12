@@ -25,3 +25,8 @@ create JobApplyBtn component
 - don't use context
 <br />
 <hr>
+
+# Custom Hook
+
+## Research
+- https://reactjs.org/docs/hooks-custom.html

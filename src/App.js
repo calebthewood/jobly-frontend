@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import useLocalStorage from './useLocalStorage';
 import './App.css';
 import RouteList from './RoutesList';
 import NavBar from './NavBar';
@@ -9,9 +10,29 @@ import Loading from './Loading';
 
 //custom hook for logout?
 
+// Key name for storing token in localStorage for "remember me" re-login
+export const TOKEN_STORAGE_ID = "jobly-token";
+
+/** Jobly application.
+ *
+ * - applicationIds: for logged in users, this is a set of application Ids
+ *   for applied jobs.
+ *
+ * - currentUser: user obj from API. This becomes the canonical way to tell
+ *   if someone is logged in. This is passed around via context throughout app,
+ *   infoLoaded: has user data been pulled from API?
+ *
+ * - token: for logged in users, this is their authentication JWT.
+ *   Is required to be set for most API calls. This is initially read from
+ *   localStorage and synced to there via the useLocalStorage hook.
+ *
+ *
+ * App -> Routes
+ */
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [isLoading, setIsLoading] = useState(true);
 
   /** Hydration: monitors for change to token state */
@@ -24,7 +45,8 @@ function App() {
       setIsLoading(false);
     }
     getToken();
-  }, [token]);
+  }, [token]
+  );
 
 
   /**Handles login, sets token state and local storage */
@@ -52,7 +74,6 @@ function App() {
     setToken(null);
     localStorage.removeItem("token");
   }
-
 
   if (isLoading) return <Loading />;
 
