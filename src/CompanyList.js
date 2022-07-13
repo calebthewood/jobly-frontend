@@ -41,7 +41,7 @@ function CompanyList() {
 
   return (
     <div className="container">
-      <div>
+      <div data-testid="search">
         <SearchForm search={search} />
       </div>
 
