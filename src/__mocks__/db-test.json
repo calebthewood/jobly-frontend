@@ -1,0 +1,51 @@
+{
+  "companies": [
+    {
+      "handle": "company-one",
+      "name": "Company One",
+      "description": "Somebody program how I. Face give away discussion view act inside. Your official relationship administration here.",
+      "numEmployees": 245,
+      "logoUrl": "/logos/logo3.png"
+    },
+    {
+      "handle": "company-two",
+      "name": "Company Two",
+      "description": "Kind crime at perhaps beat. Enjoy deal purpose serve begin or thought. Congress everything miss tend.",
+      "numEmployees": 795,
+      "logoUrl": null
+    },
+    {
+      "handle": "company-three",
+      "name": "Company Three",
+      "description": "Make radio physical southern. His white on attention kitchen market upon. Represent west open seven. Particularly subject billion much score thank bag somebody.",
+      "numEmployees": 309,
+      "logoUrl": null
+    }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Conservator, furniture",
+      "salary": 110000,
+      "equity": "0",
+      "companyHandle": "watson-davis",
+      "companyName": "Watson-Davis"
+    },
+    {
+      "id": 2,
+      "title": "Information officer",
+      "salary": 200000,
+      "equity": "0",
+      "companyHandle": "hall-mills",
+      "companyName": "Hall-Mills"
+    },
+    {
+      "id": 3,
+      "title": "Consulting civil engineer",
+      "salary": 60000,
+      "equity": "0",
+      "companyHandle": "sellers-bryant",
+      "companyName": "Sellers-Bryant"
+    }
+  ]
+}
