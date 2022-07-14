@@ -37,18 +37,16 @@ function CompanyList() {
 
   const notFound = <p style={{ color: "white" }}>Companies not found.</p>;
 
-
-
   if (isLoading) return <Loading />
 
   return (
     <div className="container">
-      <div>
+      <div data-testid="search">
         <SearchForm search={search} />
       </div>
 
       {companies.length ?
-        <div id="companyList">
+        <div id="companyList" data-testid="resolved">
           {companies.map(company => <CompanyCard key={company.handle} company={company} />)}
         </div>
         : notFound}

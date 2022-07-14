@@ -1,0 +1,25 @@
+{
+  "companies": [
+    {
+      "handle": "company-one",
+      "name": "Company One",
+      "description": "Somebody program how I. Face give away discussion view act inside. Your official relationship administration here.",
+      "numEmployees": 245,
+      "logoUrl": "/logos/logo3.png"
+    },
+    {
+      "handle": "company-two",
+      "name": "Company Two",
+      "description": "Kind crime at perhaps beat. Enjoy deal purpose serve begin or thought. Congress everything miss tend.",
+      "numEmployees": 795,
+      "logoUrl": null
+    },
+    {
+      "handle": "company-three",
+      "name": "Company Three",
+      "description": "Make radio physical southern. His white on attention kitchen market upon. Represent west open seven. Particularly subject billion much score thank bag somebody.",
+      "numEmployees": 309,
+      "logoUrl": null
+    }
+  ]
+}
