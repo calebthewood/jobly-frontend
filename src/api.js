@@ -32,7 +32,9 @@ class JoblyApi {
       : {};
 
     try {
-      return (await axios({ url, method, data, params, headers })).data;
+      //optional operator ?. used to clean up a testing error. Not ideal solution.
+      const response = await axios({ url, method, data, params, headers })
+      return response?.data;
     } catch (err) {
       console.error("API Error:", err.response);
       let message = err.response.data.error.message;
