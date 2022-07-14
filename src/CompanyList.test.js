@@ -2,9 +2,11 @@ import React from 'react';
 import {
   render,
   cleanup,
- } from '@testing-library/react';
-import "@testing-library/jest-dom/extend-expect"
+  waitFor
+} from '@testing-library/react';
+import "@testing-library/jest-dom/extend-expect";
 import CompanyList from './CompanyList';
+import axiosMock from 'axios';
 
 afterEach(cleanup);
 
@@ -19,10 +21,8 @@ it('renders Loading...', async () => {
 });
 
 
-// test('loads items eventually', async () => {
-//   render(<CompanyList />)
-//   // Wait for page to update with query text
-//   await waitFor(() => expect(apiMock).toHaveBeenCalledTimes(1))
-// })
-
-
+test('loads items eventually', async () => {
+  const { getByTestId } = render(<CompanyList />);
+  // Wait for page to update with query text
+  await waitFor(() => expect(axiosMock).toHaveBeenCalledTimes(1));
+});
