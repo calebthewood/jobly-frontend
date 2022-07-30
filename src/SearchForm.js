@@ -1,18 +1,15 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
-// import { throttle } from "lodash.throttle";
 
 /** Handles search based on user input */
 function SearchForm({ search }) {
+
   const [term, setTerm] = useState("");
+  const debouncedSearch = _.debounce(() => search(term), 500);
 
   function handleChange(evt) {
     setTerm(evt.target.value);
-
-    if (term.length > 0) {
-      const debouncedSearch = _.debounce(() => search(term), 500);
-      debouncedSearch();
-    }
+    debouncedSearch();
   }
 
   function handleSubmit(evt) {
@@ -20,12 +17,6 @@ function SearchForm({ search }) {
     search(term);
   }
 
-
-  // useEffect(() => {
-  //   return () => {
-  //     debouncedSearch.cancel();
-  //   };
-  // }, []);
 
   return (
     <div className="row justify-content-center">
