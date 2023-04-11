@@ -11,7 +11,7 @@ import { IUser } from './interfaces';
 //custom hook for logout?
 
 // Key name for storing token in localStorage for "remember me" re-login
-export const TOKEN_STORAGE_ID: any = "jobly-token";
+export const TOKEN_STORAGE_ID: string = "jobly-token";
 
 /** Jobly application.
  *

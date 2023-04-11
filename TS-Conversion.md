@@ -21,3 +21,6 @@
  - Typing hooks has been tricky
  - Typing the local storage custom hook, may need to reevaluate. This is one of the rarer cases where typing with a tuple has been the right thing to do, ex :[stateType, setStateFn]
  - The rest are ongoing...
+
+ ## 5. Gained some insight
+ So I waded throught the great explicit vs implicit typing, and I've determined that I was over ambitious in my initital endeavor to implement strict types on my code base. I turned off strict mode, remove most of the explicit typing, and got the app functioning in TypeScript. That was a much better step 1 than my old approach. From here. I can implement more types and interfaces, and weed out the number of implicit anys in the code. Small steady wins.
