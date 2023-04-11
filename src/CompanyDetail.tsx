@@ -21,7 +21,7 @@ function CompanyDetail() {
       setCompany(company);
     }
     getCompany();
-  }, []);
+  }, [handle]);
 
   if (!company) return <Loading />
 
