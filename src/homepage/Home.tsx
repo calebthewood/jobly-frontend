@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import "./home.css"
 import UserContext from "../auth/UserContext";
 import { Link } from "react-router-dom";
 

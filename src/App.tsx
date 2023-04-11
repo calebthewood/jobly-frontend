@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import useLocalStorage from './hooks/useLocalStorage';
-import './App.css';
 import RouteList from './routes-nav/RoutesList';
 import NavBar from './routes-nav/NavBar';
 import UserContext from './auth/UserContext';
