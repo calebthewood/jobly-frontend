@@ -71,11 +71,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-I built this project while attendiong Rithm School in San Francisco. It is the frontend of a fullstack job searching API. This project was built from the ground up with the following considerations:
+I started this project while attending Rithm School in San Francisco. Since then I've continued to add features, and recently converted the entire codebase to TypeScript. This repo houses the React-App frontend that complements the RESTful Node-Express backend API. This project was built from the ground up with the following considerations:
 - Careful planning of component heirarchy and state management
-- An OOP API class to handle AJAX requests to the RESTful express backend
+- An OOP API class to handle AJAX requests to the RESTful Node-Express backend
 - Client-side routing to ensure a relevant url
-- JSON Web Token implementation for authentication
+- JSON Web Token based authorization and authentication
 
 
 
@@ -141,7 +141,6 @@ See the [open issues](https://github.com/calebthewood/jobly-frontend/issues) for
 
 <!-- CONTACT -->
 ## Contact
-
 
 I'm Caleb, Web Developer and Fullstack Enginner. Questions?
 - Twitter: [@calebthewood](https://twitter.com/calebthewood)
