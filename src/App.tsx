@@ -7,11 +7,12 @@ import NavBar from './NavBar';
 import UserContext from './UserContext';
 import JoblyApi from './api';
 import Loading from './Loading';
+import { IUser } from './interfaces';
 
 //custom hook for logout?
 
 // Key name for storing token in localStorage for "remember me" re-login
-export const TOKEN_STORAGE_ID = "jobly-token";
+export const TOKEN_STORAGE_ID: any = "jobly-token";
 
 /** Jobly application.
  *
@@ -31,13 +32,13 @@ export const TOKEN_STORAGE_ID = "jobly-token";
  */
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<IUser|null>(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [isLoading, setIsLoading] = useState(true);
 
   /** Hydration: monitors for change to token state */
-  useEffect(function getLocalToken() {
-    async function getToken() {
+  useEffect(function getLocalToken(): void {
+    async function getToken(): Promise<void> {
       JoblyApi.token = token;
       if (token) {
         setCurrentUser(await JoblyApi.getUser(token));
@@ -57,20 +58,20 @@ function App() {
   }
 
   /**Handles signup, sets token state and local storage */
-  async function signupUser(formData) {
-    const token = await JoblyApi.signup(formData);
+  async function signupUser(formData: IUser) {
+    const token: any = await JoblyApi.signup(formData);
     setToken(token);
     localStorage.setItem('token', token);
   }
 
   /**Updates currentUser state */
-  function updateCurrentUser(updatedUser) {
+  function updateCurrentUser(updatedUser: IUser) {
     setCurrentUser(updatedUser);
   }
 
   /**Handles logout, cleats currentUser, token state, and local storage. */
   function logout() {
-    setCurrentUser(null);
+    setCurrentUser({});
     setToken(null);
     localStorage.removeItem("token");
   }

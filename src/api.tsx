@@ -1,7 +1,18 @@
 import axios from "axios";
 import { Jwt } from "jsonwebtoken";
 import jwt_decode from 'jwt-decode';
-import { IApply, ICompany, ICompanyList, IJobsList, IUser } from "./interfaces";
+import {
+  IApply,
+  ICompany,
+  IUser,
+  IToken,
+  IJob,
+  DecodedToken
+} from "./interfaces";
+
+
+
+
 
 //token from insomnia testing: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZyb2RvIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjUwNTYxMTI2fQ.K8_5JvLSQ3A9l_ZVINJT5Uc_FUikcirKEJ8SgZAjeFA
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
@@ -23,7 +34,9 @@ class JoblyApi {
   //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-  static token = null;
+
+  static token: string | null = null;
+  //This value was previously the value null. If i break j
 
   //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
 
@@ -47,85 +60,82 @@ class JoblyApi {
 
   // Individual API routes
 
-
-
   /** Get details on a company by handle. */
-  static async getCompany(handle: string): Promise<ICompany> {
+  static async getCompany(handle: string): Promise<any> {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
 
 
   /** Get all companies */
-  static async getCompanies(): Promise<ICompanyList>{
-  let res = await this.request(`companies`);
-  return res.companies;
-}
+  static async getCompanies(): Promise<any> {
+    let res = await this.request(`companies`);
+    return res.companies;
+  }
 
   /** Get all jobs */
-  static async getJobs(): Promise<IJobsList> {
-  let res = await this.request('jobs');
-  return res.jobs;
-}
+  static async getJobs(): Promise<any> {
+    let res = await this.request('jobs');
+    return res.jobs;
+  }
 
   /** Search Company List */
-  static async searchCompany(term: string): Promise<ICompanyList> {
-  const data = { name: term };
-  let res = await this.request("companies", data);
-  return res.companies;
-}
+  static async searchCompany(term: string): Promise<any> {
+    const data = { name: term };
+    let res = await this.request("companies", data);
+    return res.companies;
+  }
 
   /** Search Job List */
-  static async searchJob(term: string): Promise<IJobsList> {
-  const data = { title: term };
-  let res = await this.request("jobs", data);
-  return res.jobs;
-}
+  static async searchJob(term: string): Promise<any> {
+    const data = { title: term };
+    let res = await this.request("jobs", data);
+    return res.jobs;
+  }
 
   /**Login User
    * returns token or error.
    */
-  static async getToken({ username, password }: IUser): Promise<unknown> {
-  const data: IUser = { username, password };
-  const res = await this.request("auth/token", data, "post");
-  return res.token;
-}
+  static async getToken({ username, password }): Promise<any> {
+    const data = { username, password };
+    const res = await this.request("auth/token", data, "post");
+    return res.token;
+  }
 
   /** Registers a user */
-  static async signup({ username, password, firstName, lastName, email }: IUser): Promise<Jwt> {
-  const data = { username, password, firstName, lastName, email };
+  static async signup({ username, password, firstName, lastName, email }: IUser): Promise<any> {
+    const data = { username, password, firstName, lastName, email };
 
-  const res = await this.request("auth/register", data, "post");
-  return res.token;
-}
+    const res = await this.request("auth/register", data, "post");
+    return res.token;
+  }
 
   /** Applies to a job */
-
-  static async applyToJob(jobId: string): Promise<IApply> {
-  const { username }: IUser = jwt_decode(this.token);
-  const res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
-  return res.data;
-}
+  static async applyToJob(jobId: string): Promise<any> {
+    const { username }: DecodedToken = jwt_decode(this.token);
+    const res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
+    return res.data;
+  }
 
   /** Retrieves user information */
-  static async getUser(token: string) {
-  const { username } = jwt_decode(token);
-  const res = await this.request(`users/${username}`);
-  return res.user;
-}
+  static async getUser(token: any) {
+    const { username }: DecodedToken = jwt_decode(token);
+    const res = await this.request(`users/${username}`);
+    return res.user;
+  }
 
   /** Updates a user's profile */
   static async updateUser(data: IUser) {
-  const { username }: IUser = jwt_decode(this.token);
-  delete data.isAdmin;
-  delete data.username;
-  delete data.applications;
+    const { username }: DecodedToken = jwt_decode(this.token);
+    delete data.isAdmin;
+    delete data.username;
+    delete data.applications; // applications same as jobs
 
-  const res = await this.request(`users/${username}`, data, "patch");
+    const res = await this.request(`users/${username}`, data, "patch");
 
-  return res;
+    return res;
 
-}
+  }
 
   //accepts token, getsUser object.
   //decode token, API getUser

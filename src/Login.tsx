@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ILoginProps } from "./interfaces"
 
 /** Handles Login
  * Props: loginUser()
@@ -8,7 +9,7 @@ import { Link } from "react-router-dom";
  *
  * Renders Login Form and sets currentUser.
 */
-function Login({ loginUser }) {
+function Login({ loginUser }: ILoginProps) {
 
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ function Login({ loginUser }) {
   });
 
   /** Updates formData state on each change */
-  function handleChange(evt) {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
 
     setFormData((fData) => ({
@@ -27,7 +28,7 @@ function Login({ loginUser }) {
   }
 
   /** Handles login, calls login fn from App. */
-  async function handleSubmit(evt) {
+  async function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
 
     try {

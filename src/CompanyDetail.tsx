@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import JobCard from "./JobCard";
 import JoblyApi from "./api";
 import Loading from "./Loading";
+import { ICompany } from "./interfaces";
 
 /** Company Detail:
  * state: company object
@@ -11,12 +12,12 @@ import Loading from "./Loading";
  */
 function CompanyDetail() {
   const { handle } = useParams();
-  const [company, setCompany] = useState(null);
+  const [company, setCompany] = useState<ICompany | null>(null);
 
   /**Gets company data with jobs from API */
   useEffect(function getCompanyFromApi() {
-    async function getCompany() {
-      const company = await JoblyApi.getCompany(handle);
+    async function getCompany(): Promise<void> {
+      const company: ICompany = await JoblyApi.getCompany(handle!);
       setCompany(company);
     }
     getCompany();

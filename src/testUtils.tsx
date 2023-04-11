@@ -12,9 +12,8 @@ const demoUser = {
 const UserProvider = ({
   children,
   currentUser = demoUser,
-  hasAppliedToJob = () => false,
 }) => (
-  <UserContext.Provider value={{ currentUser, hasAppliedToJob }}>
+  <UserContext.Provider value={{ currentUser }}>
     {children}
   </UserContext.Provider>
 );

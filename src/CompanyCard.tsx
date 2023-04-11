@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ICompanyCardProps } from "./interfaces";
 
 /** Creates card for each company with a link
  *
@@ -9,7 +10,7 @@ import { Link } from "react-router-dom";
  * CompanyList -> CompanyCard
  */
 
-function CompanyCard({ company }) {
+function CompanyCard({ company }: ICompanyCardProps) {
 
   return (
     <Link to={`/companies/${company.handle}`}>

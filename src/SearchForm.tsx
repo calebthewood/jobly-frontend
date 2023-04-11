@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import _ from "lodash";
 
 /** Handles search based on user input */

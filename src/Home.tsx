@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import UserContext from "./UserContext";
 import { Link } from "react-router-dom";
+import { IUser } from "./interfaces"
 
 /** Renders home page with Jobly intro */
 

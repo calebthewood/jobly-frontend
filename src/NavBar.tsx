@@ -13,7 +13,7 @@ function NavBar({currentUser, logout}) {
     padding: "0 1rem",
 
   }
-  const name = currentUser ? currentUser.username : "";
+  const name = currentUser ? currentUser.firstName : "";
 
   const loggedInLinks =
     <div>

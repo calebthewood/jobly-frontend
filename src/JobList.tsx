@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import SearchForm from './SearchForm';
 import Loading from './Loading';
+import { IJob } from './interfaces';
 
 
 /** Manages list of Jobs
@@ -14,15 +15,17 @@ import Loading from './Loading';
  * route list -> RouteList -> Route -> JobList
  */
 function JobList() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState<IJob[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   /** Gets Jobs from API and updates jobs and loading state. */
   useEffect(function getJobsFromApi() {
     async function getJobs() {
       const jobs = await JoblyApi.getJobs();
-      setJobs(jobs);
-      setIsLoading(false);
+      if (Array.isArray(jobs)) {
+        setJobs(jobs);
+        setIsLoading(false);
+      }
     }
     getJobs();
   }, []);

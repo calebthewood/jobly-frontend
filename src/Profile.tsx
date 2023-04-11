@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import JoblyApi from "./api";
 import { useContext } from "react";
@@ -18,14 +18,14 @@ import UserContext from "./UserContext";
 function Profile({ updateCurrentUser }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
-  const [message, setMessage] = useState(null);
-  const [error, setError] = useState(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
-    username: currentUser.username,
-    firstName: currentUser.firstName,
-    lastName: currentUser.lastName,
-    email: currentUser.email
+    username: currentUser?.username,
+    firstName: currentUser?.firstName,
+    lastName: currentUser?.lastName,
+    email: currentUser?.email
   });
   /**Updates formData state with changes to form. */
   function handleChange(evt) {
@@ -122,7 +122,7 @@ function Profile({ updateCurrentUser }) {
               </input>
             </div>
             <button type="submit" className="btn btn-primary me-3">Update</button>
-            <button onClick={()=> window.location.reload(false)} className="btn btn-secondary">Cancel</button>
+            <button onClick={() => navigate('/')} className="btn btn-secondary">Cancel</button>
           </form>
 
           <div className="mt-3">

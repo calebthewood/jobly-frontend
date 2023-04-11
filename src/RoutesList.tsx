@@ -9,7 +9,7 @@ import Signup from "./SignUp";
 import Profile from "./Profile";
 
 /**Renders available routes based on currentUser state. */
-function RouteList({ currentUser, loginUser, signupUser, updateCurrentUser }) {
+function RouteList({ currentUser, loginUser, signupUser, updateCurrentUser, token }) {
 
   const loggedInRoutes =
     <>

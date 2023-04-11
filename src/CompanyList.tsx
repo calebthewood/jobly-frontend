@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import CompanyCard from './CompanyCard';
 import SearchForm from './SearchForm';
 import Loading from './Loading';
+import { ICompany } from './interfaces';
 
 /** Manages a list of Companies
  *
@@ -14,13 +15,13 @@ import Loading from './Loading';
  */
 
 function CompanyList() {
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState<ICompany[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   /**Gets list of companies on mount */
   useEffect(function getCompaniesFromApi() {
     async function getCompanies() {
-      const companies = await JoblyApi.getCompanies();
+      const companies: ICompany[]  = await JoblyApi.getCompanies();
       setCompanies(companies);
       setIsLoading(false);
     }
@@ -28,9 +29,9 @@ function CompanyList() {
   }, []);
 
   /**Handles Search, updates companies state */
-  async function search(term) {
+  async function search(term: string) {
     setIsLoading(true);
-    const companies = await JoblyApi.searchCompany(term);
+    const companies: ICompany[] = await JoblyApi.searchCompany(term);
     setCompanies(companies);
     setIsLoading(false);
   }
@@ -47,7 +48,7 @@ function CompanyList() {
 
       {companies.length ?
         <div id="companyList" data-testid="resolved">
-          {companies.map(company => <CompanyCard key={company.handle} company={company} />)}
+          {companies.map( (company: ICompany) => <CompanyCard key={company.handle} company={company} />)}
         </div>
         : notFound}
     </div>

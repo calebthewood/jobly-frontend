@@ -5,12 +5,12 @@ interface ICompany {
   name: string;
   description: string;
   numEmployees: number;
-  logoUrl?: string; // can be null or string
-  jobs: [IJob];
+  logoUrl?: string;
+  jobs: IJob[];
 }
 
-interface ICompanyList {
-  companies: [ICompany];
+interface ICompanyCardProps {
+  company: ICompany;
 }
 
 interface IJob {
@@ -26,27 +26,62 @@ interface IApply {
   applied: number;
 }
 
-interface IJobsList {
-  jobs: [IJob];
-}
-
 interface IUser {
-  username: string;
+  username?: string;
   password?: string;
   firstName?: string;
   lastName?: string;
   email?: string;
   isAdmin?: boolean;
-  jobs?: [number];
+  jobs?: number[];
+  applications?: number[];
+  token?: string;
 }
+
+interface IToken {
+  username?: string;
+}
+
+interface ILogin {
+  username: string;
+  password: string;
+}
+
+interface ISignup extends ILogin {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+interface IProfileData {
+  username: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+interface ILoginProps {
+  loginUser: (formData: IUser) => void;
+}
+
+interface DecodedToken {
+  username: string;
+}
+
+export type MyToken<T> = T | null;
 
 export type {
   ICompany,
   IJob,
-  ICompanyList,
-  IJobsList,
   IUser,
-  IApply
+  IApply,
+  IToken,
+  ILogin,
+  ISignup,
+  IProfileData,
+  ILoginProps,
+  ICompanyCardProps,
+  DecodedToken,
 };
 /* better to have several user sub-interfaces for the
 various places user properties get used, or to have

@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
  *   const [myThing, setMyThing] = useLocalStorage("myThing")
  */
 
-function useLocalStorage(key, firstValue = null) {
+function useLocalStorage(key: any, firstValue: null = null): [string | null, (a: string | null) => void] {
   const initialValue = localStorage.getItem(key) || firstValue;
 
   const [item, setItem] = useState(initialValue);
