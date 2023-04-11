@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
-import Home from "./Home";
-import CompanyList from "./CompanyList";
-import CompanyDetail from "./CompanyDetail";
-import JobList from "./JobList";
-import Login from "./Login";
-import Signup from "./SignUp";
-import Profile from "./Profile";
+import Home from "../homepage/Home";
+import CompanyList from "../companies/CompanyList";
+import CompanyDetail from "../companies/CompanyDetail";
+import JobList from "../jobs/JobList";
+import Login from "../auth/Login";
+import Signup from "../auth/SignUp";
+import Profile from "../profiles/Profile";
 
 /**Renders available routes based on currentUser state. */
 function RouteList({ currentUser, loginUser, signupUser, updateCurrentUser, token }) {

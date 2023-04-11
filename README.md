@@ -86,6 +86,7 @@ I built this project while attendiong Rithm School in San Francisco. It is the f
 ### Built With
 
 * [React.js](https://reactjs.org/)
+* [TypeScript](https://www.typescriptlang.org/docs/)
 * [Bootstrap](https://getbootstrap.com)
 * [JWT](https://jwt.io/)
 * [React-DOM](https://reactjs.org/docs/react-dom.html)
@@ -94,7 +95,6 @@ I built this project while attendiong Rithm School in San Francisco. It is the f
 * [Express-Jobly](https://github.com/calebthewood/express-jobly)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -124,9 +124,9 @@ WIP: Include info on all the different actions a user, company, or admin can tak
     - [x] improve breakpoints
     - [ ] make navbar collapsible
 - [ ] Job application feature
-    - [ ] add apply
+    - [x] add apply
     - [ ] add un-apply
-- [ ] Use a custom hook
+- [x] Use a custom hook for local storage
 - [ ] Increase testing
 - [ ] Add pagination
 - [ ] Live search
@@ -144,9 +144,9 @@ See the [open issues](https://github.com/calebthewood/jobly-frontend/issues) for
 
 
 I'm Caleb, Web Developer and Fullstack Enginner. Questions?
-- I post daily on twitter: [@calebthewood](https://twitter.com/calebthewood)
+- Twitter: [@calebthewood](https://twitter.com/calebthewood)
 - Personal Site: [calebwood.dev](https://www.calebwood.dev/)
-- email: calebwood.cs@gmail.com
+- email: [calebwood.cs@gmail.com](calebwood.cs@gmail.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -1,9 +1,9 @@
-import JoblyApi from './api';
+import JoblyApi from '../api/api';
 import { useState, useEffect } from "react";
 import CompanyCard from './CompanyCard';
-import SearchForm from './SearchForm';
-import Loading from './Loading';
-import { ICompany } from './interfaces';
+import SearchForm from '../common/SearchForm';
+import Loading from '../common/Loading';
+import { ICompany } from '../interfaces';
 
 /** Manages a list of Companies
  *

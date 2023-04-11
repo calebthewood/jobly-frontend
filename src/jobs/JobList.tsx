@@ -1,9 +1,9 @@
-import JoblyApi from './api';
+import JoblyApi from '../api/api';
 import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
-import SearchForm from './SearchForm';
-import Loading from './Loading';
-import { IJob } from './interfaces';
+import SearchForm from '../common/SearchForm';
+import Loading from '../common/Loading';
+import { IJob } from '../interfaces';
 
 
 /** Manages list of Jobs

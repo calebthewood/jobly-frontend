@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ILoginProps } from "./interfaces"
+import { ILoginProps } from "../interfaces"
 
 /** Handles Login
  * Props: loginUser()

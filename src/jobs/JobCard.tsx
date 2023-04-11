@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import UserContext from "./UserContext";
-import JoblyApi from './api';
+import UserContext from "../auth/UserContext";
+import JoblyApi from '../api/api';
 
 /** Creates card for each Job
  *

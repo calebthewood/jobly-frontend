@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import JobCard from "./JobCard";
-import JoblyApi from "./api";
-import Loading from "./Loading";
-import { ICompany } from "./interfaces";
+import JobCard from "../jobs/JobCard";
+import JoblyApi from "../api/api";
+import Loading from "../common/Loading";
+import { ICompany } from "../interfaces";
 
 /** Company Detail:
  * state: company object

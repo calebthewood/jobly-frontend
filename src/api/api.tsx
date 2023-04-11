@@ -3,7 +3,7 @@ import jwt_decode from 'jwt-decode';
 import {
   IUser,
   DecodedToken
-} from "./interfaces";
+} from "../interfaces";
 
 
 

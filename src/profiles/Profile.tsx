@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import JoblyApi from "./api";
+import JoblyApi from "../api/api";
 import { useContext } from "react";
-import UserContext from "./UserContext";
+import UserContext from "../auth/UserContext";
 
 
 

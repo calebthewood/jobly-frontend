@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ICompanyCardProps } from "./interfaces";
+import { ICompanyCardProps } from "../interfaces";
 
 /** Creates card for each company with a link
  *

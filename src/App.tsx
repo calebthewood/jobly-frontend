@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from './hooks/useLocalStorage';
 import './App.css';
-import RouteList from './RoutesList';
-import NavBar from './NavBar';
-import UserContext from './UserContext';
-import JoblyApi from './api';
-import Loading from './Loading';
+import RouteList from './routes-nav/RoutesList';
+import NavBar from './routes-nav/NavBar';
+import UserContext from './auth/UserContext';
+import JoblyApi from './api/api';
+import Loading from './common/Loading';
 import { IUser } from './interfaces';
 
 //custom hook for logout?
