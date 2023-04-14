@@ -142,7 +142,7 @@ See the [open issues](https://github.com/calebthewood/jobly-frontend/issues) for
 <!-- CONTACT -->
 ## Contact
 
-I'm Caleb, Web Developer and Fullstack Enginner. Questions?
+I'm Caleb, Web Developer and Fullstack Engineer. Questions?
 - Twitter: [@calebthewood](https://twitter.com/calebthewood)
 - Personal Site: [calebwood.dev](https://www.calebwood.dev/)
 - email: [calebwood.cs@gmail.com](calebwood.cs@gmail.com)

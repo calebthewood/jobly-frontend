@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import UserContext from "../auth/UserContext";
 import JoblyApi from '../api/api';
+import { formatCurrency } from "../utils";
 
 /** Creates card for each Job
  *
@@ -31,6 +32,8 @@ function JobCard({ job }) {
     }
   }
 
+  const salary = formatCurrency(job.salary || "")
+
   return (
     <div className="row justify-content-center">
       <div className="col-12 col-md-10 col-xl-7">
@@ -42,7 +45,7 @@ function JobCard({ job }) {
             <div className="row card-text fw-light">
               <div className="col">
                 <small>
-                  Salary: {job.salary || ""}
+                  Salary: {salary}
                 </small>
 
                 <div className="card-text fw-light">

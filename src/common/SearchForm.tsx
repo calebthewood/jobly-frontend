@@ -19,7 +19,7 @@ function SearchForm({ search }) {
 
 
   return (
-    <div className="row justify-content-center">
+    <div className="row justify-content-center my-3">
       <form onSubmit={handleSubmit} className="col-md-8 ">
         <div className="input-group mb-3 mt-3">
           <input
