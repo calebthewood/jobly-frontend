@@ -26,11 +26,9 @@ function CompanyDetail() {
   if (!company) return <Loading />
 
   return (
-
-
-    <div className="row justify-content-center">
-      < div mb-3 className="col-6">
-        <h5 style={{ color: "white", fontWeight:"bold"}}>
+    <div className="row justify-content-center mb-3">
+      <div className="col-12 col-md-10 col-xl-7 my-4">
+        <h5 className="text-shadow" style={{ color: "white", fontWeight:"bold"}}>
           {company.name}
         </h5>
         <p style={{ color: "white"}}>

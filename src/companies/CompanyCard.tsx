@@ -15,7 +15,7 @@ function CompanyCard({ company }: ICompanyCardProps) {
   return (
     <Link to={`/companies/${company.handle}`}>
       <div className="row justify-content-center">
-        <div className="col-12 col-md-10 col-xl-7">
+        <div className="col-12 col-md-10 col-xl-8">
           <div className="card shadow mb-4">
             <div className="card-body">
               <h6 className="card-title">

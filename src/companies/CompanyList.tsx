@@ -13,7 +13,6 @@ import { ICompany } from '../interfaces';
  *
  * RouteList -> Route -> CompanyList
  */
-
 function CompanyList() {
   const [companies, setCompanies] = useState<ICompany[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
