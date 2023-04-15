@@ -3,13 +3,14 @@ import JobCard from "./JobCard";
 import { UserProvider } from "../testUtils";
 
 
-
-it("matches snapshot", function () {
-  let item = { title: "CEO", salary: 1000000, equity: 10 };
-  const { asFragment } = render(
+describe('CompanyDetail', () => {
+  it("matches snapshot", function () {
+    let item = { title: "CEO", salary: 1000000, equity: 10 };
+    const { asFragment } = render(
       <UserProvider>
         <JobCard job={item} />
       </UserProvider>,
-  );
-  expect(asFragment()).toMatchSnapshot();
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
