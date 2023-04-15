@@ -16,8 +16,8 @@ it("matches snapshot", function () {
 });
 
 it('renders Loading...', async () => {
-  const { getByTestId } = render(<JobList />);
-  expect(getByTestId("loading")).toHaveTextContent("Loading...");
+  const { screen } = render(<JobList />);
+  expect(screen.getByTestId("loading")).toHaveTextContent("Loading...");
 });
 
 
