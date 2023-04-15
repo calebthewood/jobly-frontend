@@ -15,7 +15,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -40,10 +39,7 @@
     ·
     <a href="https://github.com/calebthewood/jobly-frontend/issues">Request Feature</a>
   </p>
-
-
 </div>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -67,7 +63,6 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -80,7 +75,6 @@ I started this project while attending Rithm School in San Francisco. Since then
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -113,7 +107,6 @@ WIP: Include info on all the different actions a user, company, or admin can tak
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -138,7 +131,6 @@ See the [open issues](https://github.com/calebthewood/jobly-frontend/issues) for
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- CONTACT -->
 ## Contact
 
@@ -148,7 +140,6 @@ I'm Caleb, Web Developer and Fullstack Engineer. Questions?
 - email: [calebwood.cs@gmail.com](calebwood.cs@gmail.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ACKNOWLEDGMENTS -->
