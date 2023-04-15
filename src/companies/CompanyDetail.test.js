@@ -3,18 +3,20 @@ import CompanyDetail from "./CompanyDetail";
 import { MemoryRouter, Route } from "react-router-dom";
 import { UserProvider } from "../testUtils";
 
-it("renders without crashing", function () {
-  render(
+
+describe('CompanyDetail', () => {
+  it("renders without crashing", function () {
+    render(
       <MemoryRouter>
         <UserProvider>
           <CompanyDetail />
         </UserProvider>
       </MemoryRouter>,
-  );
-});
+    );
+  });
 
-it("matches snapshot", function () {
-  const { asFragment } = render(
+  it("matches snapshot", function () {
+    const { asFragment } = render(
       <MemoryRouter initialEntries={["/company/ibm"]}>
         <UserProvider>
           <Route path="/company/:handle">
@@ -22,6 +24,7 @@ it("matches snapshot", function () {
           </Route>
         </UserProvider>
       </MemoryRouter>,
-  );
-  expect(asFragment()).toMatchSnapshot();
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
