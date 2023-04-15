@@ -1,6 +1,5 @@
-import React from "react";
 import { render } from "@testing-library/react";
-import Company from "./CompanyDetail";
+import CompanyDetail from "./CompanyDetail";
 import { MemoryRouter, Route } from "react-router-dom";
 import { UserProvider } from "../testUtils";
 
@@ -8,7 +7,7 @@ it("renders without crashing", function () {
   render(
       <MemoryRouter>
         <UserProvider>
-          <Company />
+          <CompanyDetail />
         </UserProvider>
       </MemoryRouter>,
   );
@@ -19,7 +18,7 @@ it("matches snapshot", function () {
       <MemoryRouter initialEntries={["/company/ibm"]}>
         <UserProvider>
           <Route path="/company/:handle">
-            <Company />
+            <CompanyDetail />
           </Route>
         </UserProvider>
       </MemoryRouter>,

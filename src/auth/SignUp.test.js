@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
-import SignupForm from "./SignupForm";
+import Signup from "./SignupForm";
 import { MemoryRouter } from "react-router";
 
 it("matches snapshot", function () {
   const { asFragment } = render(
       <MemoryRouter>
-        <SignupForm />
+        <Signup />
       </MemoryRouter>,
   );
   expect(asFragment()).toMatchSnapshot();
