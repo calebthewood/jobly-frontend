@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot with logo 1`] = `
+exports[`CompanyCard matches snapshot with logo 1`] = `
 <DocumentFragment>
   <a
     href="/companies/rithm"
@@ -35,7 +35,7 @@ exports[`matches snapshot with logo 1`] = `
 </DocumentFragment>
 `;
 
-exports[`matches snapshot without logo 1`] = `
+exports[`CompanyCard matches snapshot without logo 1`] = `
 <DocumentFragment>
   <a
     href="/companies/algo"

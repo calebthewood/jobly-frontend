@@ -31,7 +31,7 @@ export const TOKEN_STORAGE_ID: string = "jobly-token";
  */
 
 function App() {
-  const [currentUser, setCurrentUser] = useState<IUser|null>(null);
+  const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,9 +45,7 @@ function App() {
       setIsLoading(false);
     }
     getToken();
-  }, [token]
-  );
-
+  }, [token]);
 
   /**Handles login, sets token state and local storage */
   async function loginUser(formData) {
