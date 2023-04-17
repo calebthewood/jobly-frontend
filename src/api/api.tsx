@@ -22,16 +22,12 @@ const BASE_URL = "https://r25-jobly-backend.herokuapp.com";
  */
 
 class JoblyApi {
-  // Remember, the backend needs to be authorized with a token
-  // We're providing a token you can use to interact with the backend API
-  // DON'T MODIFY THIS TOKEN
+  // DON'T MODIFY THIS TOKEN - admin token for testing
   // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
   //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-
   static token: string | null = null;
-  //This value was previously the value null. If i break j
 
   //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ…5MDl9.tTFEeQpOwFGO2v0XMZCsuR84PUIvoKa9YYiIYIoP9MA'
 
@@ -43,7 +39,6 @@ class JoblyApi {
       : {};
 
     try {
-      //optional operator ?. used to clean up a testing error. Not ideal solution.
       const response = await axios({ url, method, data, params, headers });
       return response?.data;
     } catch (err: any) {
