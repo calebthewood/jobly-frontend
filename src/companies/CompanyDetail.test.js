@@ -63,11 +63,11 @@ describe('CompanyDetail', () => {
         </UserProvider>
       </MemoryRouter >
     );
-    await waitFor(() => { expect(screen.getByText(company.name)).toBeInTheDocument() });
-    await waitFor(() => { expect(screen.getByText(company.description)).toBeInTheDocument() });
-    await waitFor(() => { expect(screen.getByText(company.jobs[0].title)).toBeInTheDocument() });
-    await waitFor(() => { expect(screen.getByText(salary)).toBeInTheDocument() });
-    await waitFor(() => { expect(screen.queryByTestId("loading")).toBeNull() });
+    await waitFor(() => { expect(screen.getByText(company.name)).toBeInTheDocument(); });
+    await waitFor(() => { expect(screen.getByText(company.description)).toBeInTheDocument(); });
+    await waitFor(() => { expect(screen.getByText(company.jobs[0].title)).toBeInTheDocument(); });
+    await waitFor(() => { expect(screen.getByText(salary)).toBeInTheDocument(); });
+    await waitFor(() => { expect(screen.queryByTestId("loading")).toBeNull(); });
   });
 
   it("should render a loading indicator when waiting for data", async () => {

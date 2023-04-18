@@ -4,6 +4,7 @@ exports[`CompanyCard matches snapshot with logo 1`] = `
 <DocumentFragment>
   <a
     href="/companies/rithm"
+    role="link"
   >
     <div
       class="row justify-content-center"
@@ -39,6 +40,7 @@ exports[`CompanyCard matches snapshot without logo 1`] = `
 <DocumentFragment>
   <a
     href="/companies/algo"
+    role="link"
   >
     <div
       class="row justify-content-center"
