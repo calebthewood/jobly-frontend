@@ -3,7 +3,6 @@ import { MemoryRouter } from "react-router";
 import CompanyCard from "./CompanyCard";
 
 
-
 describe('CompanyCard', () => {
   const companyOne = {
     handle: "rithm",

@@ -49,6 +49,8 @@ describe('CompanyList', () => {
         </UserProvider>
       </MemoryRouter >
     );
+    expect(screen.getByTestId("loading")).toBeInTheDocument();
+    expect(screen.getByTestId("loading")).toHaveTextContent("Loading...");
     await waitFor(() => { expect(JoblyApi.getCompanies).toHaveBeenCalledTimes(1); });
     await waitFor(() => { expect(screen.getByText(companies[0].name)).toBeInTheDocument(); });
     await waitFor(() => { expect(screen.getByText(companies[0].description)).toBeInTheDocument(); });
@@ -70,4 +72,18 @@ describe('CompanyList', () => {
     await waitFor(() => { expect(screen.getByTestId('not-found')).toBeInTheDocument(); });
     await waitFor(() => { expect(screen.getByText('Companies not found.')).toBeInTheDocument(); });
   });
+
+  it('renders the search bar', async () => {
+    JoblyApi.getCompanies.mockResolvedValueOnce(companies);
+    render(
+      <MemoryRouter initialEntries={['/companies']}>
+        <UserProvider>
+          <CompanyList />
+        </UserProvider>
+      </MemoryRouter >
+    );
+    await waitFor(() => { expect(screen.getByTestId('search')).toBeInTheDocument(); });
+  });
 });
+
+

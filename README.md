@@ -72,7 +72,9 @@ I started this project while attending Rithm School in San Francisco. Since then
 - Client-side routing to ensure a relevant url
 - JSON Web Token based authorization and authentication
 
+### Status
 
+I'm currently working on bringing the testing suite up to 80%+ coverage. I'm accomplishing this first through Jest unit & integration tests. Then I plan to implement an end-to-end test suite with Playwright or Cypress.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -115,7 +117,7 @@ WIP: Include info on all the different actions a user, company, or admin can tak
     - [ ] move search to navbar & make collapsible
     - [x] card margin & padding
     - [x] improve breakpoints
-    - [ ] make navbar collapsible
+    - [x] make navbar collapsible
 - [ ] Job application feature
     - [x] add apply
     - [ ] add un-apply
