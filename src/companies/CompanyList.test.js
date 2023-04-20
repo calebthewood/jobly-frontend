@@ -8,7 +8,6 @@ import JoblyApi from "../api/api";
 
 jest.mock("../api/api");
 
-
 const companies = [
   {
     handle: "test-company-1",
@@ -25,17 +24,11 @@ const companies = [
   }
 ];
 
-
-beforeEach(() => {
-  JoblyApi.getCompanies.mockResolvedValueOnce(companies);
-});
-
-afterEach(() => {
-  jest.clearAllMocks();
-});
-
-
 describe('CompanyList', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('matches snapshot', function () {
     const { asFragment } = render(<CompanyList />);
     expect(asFragment()).toMatchSnapshot();
@@ -47,7 +40,8 @@ describe('CompanyList', () => {
     expect(screen.getByTestId("loading")).toHaveTextContent("Loading...");
   });
 
-  it('should render companies', async () => {
+  it('should render multiple companies', async () => {
+    JoblyApi.getCompanies.mockResolvedValueOnce(companies);
     render(
       <MemoryRouter initialEntries={['/companies']}>
         <UserProvider>
@@ -60,5 +54,20 @@ describe('CompanyList', () => {
     await waitFor(() => { expect(screen.getByText(companies[0].description)).toBeInTheDocument(); });
     await waitFor(() => { expect(screen.getByText(companies[1].name)).toBeInTheDocument(); });
     await waitFor(() => { expect(screen.getByText(companies[1].description)).toBeInTheDocument(); });
+
+  });
+
+  it('should render "not found" message if state empty', async () => {
+    JoblyApi.getCompanies.mockResolvedValueOnce([]);
+    render(
+      <MemoryRouter initialEntries={['/companies']}>
+        <UserProvider>
+          <CompanyList />
+        </UserProvider>
+      </MemoryRouter >
+    );
+    await waitFor(() => { expect(JoblyApi.getCompanies).toHaveBeenCalledTimes(1); });
+    await waitFor(() => { expect(screen.getByTestId('not-found')).toBeInTheDocument(); });
+    await waitFor(() => { expect(screen.getByText('Companies not found.')).toBeInTheDocument(); });
   });
 });

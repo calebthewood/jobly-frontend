@@ -35,7 +35,7 @@ function CompanyList() {
     setIsLoading(false);
   }
 
-  const notFound = <p style={{ color: "white" }}>Companies not found.</p>;
+  const notFound = <p data-testid="not-found" style={{ color: "white" }}>Companies not found.</p>;
 
   if (isLoading) return <Loading />
 
